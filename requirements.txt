@@ -16,3 +16,5 @@ pycocotools~=2.0.2
 regex~=2021.4.4
 zss==1.2.0
 git+https://github.com/google-research/bleurt.git
+jupyter
+bertviz
