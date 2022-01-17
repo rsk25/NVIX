@@ -1,4 +1,4 @@
-tqdm
+sudotqdm
 numpy
 scipy
 pandas
