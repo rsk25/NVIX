@@ -40,6 +40,53 @@ def load_config(path):
     return conf
 
 
+def run_model_for_attention(model_path, **exp_dict):
+    set_seed(exp_dict[KEY_SEED])
+    
+    pretrained = model_load(model_path)
+    if device_count() > 0:
+        pretrained.to('cuda')
+        print("Training on cuda\n")
+
+    config = load_config(model_path)
+    dataset = Dataset(exp_dict[KEY_DATASET], langmodel=config[KEY_MODEL][MDL_ENCODER], seed=exp_dict[KEY_SEED],
+                      number_window=config[KEY_WINDOW])
+    tester = Tester()
+
+    with torch.no_grad():
+        
+        dataset.select_items_with_file('/home/cocochanel/NVIX/resource/experiments/pen/test')
+        output_pairs = []
+        results = {}
+        for batch in dataset.get_minibatches(config[KEY_BATCH_SZ], for_testing=True):
+            output = pretrained.forward(text=batch.text.to(pretrained.device),
+                                        beam=config[KEY_BEAM], beam_expl=config[KEY_BEAM_DESC])
+
+            # Un-batch output
+            equation = output['equation']
+            explanation = output.get('explanation', None)
+            for b in range(batch.batch_size):
+                item = batch.item_of_batch(b)
+                pairs = dict(equation=(item.equation, equation[b]))
+
+                if 'explanation' in output:
+                    pairs['explanation'] = (item.explanation.to_id_explanation_dict(dataset.tokenizer),
+                                            explanation[b].to_id_explanation_dict(dataset.tokenizer))
+                    pairs['explanation_generated'] = explanation[b]
+
+                output_pairs.append((item, pairs))
+
+                item_id = item.info.item_id
+                results[item_id] = (item, pairs)
+
+        test_result = tester.check(output_pairs, tokenizer=dataset.tokenizer)
+        
+    del pretrained
+    del dataset
+    tester.close()
+    return test_result
+
+
 def run_model_once(model_path, **exp_dict):
     set_seed(exp_dict[KEY_SEED])
     outdir = Path(model_path)
