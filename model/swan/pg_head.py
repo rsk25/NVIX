@@ -112,3 +112,4 @@ class PointerGeneratorHead(nn.Module):
         logprob = (copy_dist + gen_dist).log()
         logprob = logprob.masked_fill(torch.isfinite(logprob).logical_not(), NEG_INF)
         return logprob, (new_key,)
+        

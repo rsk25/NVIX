@@ -189,8 +189,7 @@ class MultiheadAttention(nn.Module):
         self.linear_v = nn.Linear(self.attn.hidden_dim, self.attn.hidden_dim)
         self.linear_out = nn.Linear(self.attn.hidden_dim, self.attn.hidden_dim)
 
-    def forward(self, query: torch.Tensor, key_value: torch.Tensor = None, key_ignorance_mask: torch.Tensor = None,
-                attention_mask: torch.Tensor = None, prev_key_value: tuple = None, is_self: bool = False):
+    def forward(self, query: torch.Tensor, key_value: torch.Tensor = None, key_ignorance_mask: torch.Tensor = None, attention_mask: torch.Tensor = None, prev_key_value: tuple = None, is_self: bool = False):
         """
         Compute multi-head attention
 
@@ -255,7 +254,7 @@ class MultiheadAttention(nn.Module):
         # Flatten dim #0 and #1: [B, N, T, H/N] -> [BN, T, H/N].
         value = new_value.flatten(0, 1).contiguous()
 
-        # Compute output of weighted sum: [BN, S, H/N] -> [B, N, S, H/N] -> [B, S, N, H/N] -> [B, S, H].
+        # Compute output of weighted sum: [BN, S, H/N] -> [B, N, S, H/₩N] -> [B, S, N, H/N] -> [B, S, H].
         output = torch.bmm(attn, value) \
             .view(batch_size, self.attn.num_heads, query_len, self.attn.dim_head) \
             .transpose(1, 2).flatten(2, 3).contiguous()

@@ -85,7 +85,7 @@ class COCOEvalCapModified(COCOEvalCap):
         # Compute scores
         # =================================================
         for scorer, method in scorers:
-            print('computing %s score...' % (scorer.method()))
+            print('computing %s score...' % (method))
             score, scores = scorer.compute_score(gts, res)
             if type(method) == list:
                 for sc, scs, m in zip(score, scores, method):

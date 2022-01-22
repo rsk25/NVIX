@@ -46,7 +46,6 @@ def run_model_for_attention(model_path, **exp_dict):
     pretrained = model_load(model_path)
     if device_count() > 0:
         pretrained.to('cuda')
-        print("Training on cuda\n")
 
     config = load_config(model_path)
     dataset = Dataset(exp_dict[KEY_DATASET], langmodel=config[KEY_MODEL][MDL_ENCODER], seed=exp_dict[KEY_SEED],
@@ -78,13 +77,14 @@ def run_model_for_attention(model_path, **exp_dict):
 
                 item_id = item.info.item_id
                 results[item_id] = (item, pairs)
-
-        test_result = tester.check(output_pairs, tokenizer=dataset.tokenizer)
         
+        # check metrics of btw hypo. and ref.
+        test_check = tester.check(output_pairs, tokenizer=dataset.tokenizer) 
+
     del pretrained
     del dataset
     tester.close()
-    return test_result
+    return test_check, results
 
 
 def run_model_once(model_path, **exp_dict):
