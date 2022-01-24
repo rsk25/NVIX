@@ -65,6 +65,10 @@ class SWANBase(EPT):
     def _shuffle_on_training(self) -> bool:
         return self.config[MDL_EXPLANATION].get(MDL_X_SHUFFLE_ON_TRAIN, True)
 
+    @property
+    def attention_score(self) -> torch.Tensor:
+        return self.explanation_pghead.attention_score
+
     def _get_recombine_policy(self, size: int) -> List[Tuple[bool, bool]]:
         policy = self._recombine_policy
         if policy == MDL_X_R_BOTH:
