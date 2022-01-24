@@ -31,6 +31,10 @@ class PointerGeneratorHead(nn.Module):
 
         self.log_sigmoid = nn.LogSigmoid()
 
+        # attribute for saving attention score
+        self.attention_score = torch.Tensor()
+
+
     def _compute_attention(self, text: Encoded, decoded: Encoded,
                            prev_key: torch.Tensor = None) -> Tuple[torch.Tensor, ...]:
         # Text: [B, S, H]
@@ -46,6 +50,9 @@ class PointerGeneratorHead(nn.Module):
 
         # Set score as zero on padding in decoded.
         attn_score = attn_score.masked_fill(decoded.pad.unsqueeze(-1), NEG_INF)
+
+        # save the computed attention score
+        self.attention_score = attn_score.detach().cpu().exp()
 
         # Compute attented vector h_t^* [B, T, H] = [B, T, S] * [B, S, H]
         attented_vector = torch.bmm(attn_score.exp(), text.vector)
