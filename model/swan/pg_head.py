@@ -52,7 +52,7 @@ class PointerGeneratorHead(nn.Module):
         attn_score = attn_score.masked_fill(decoded.pad.unsqueeze(-1), NEG_INF)
 
         # save the computed attention score
-        self.attention_score = attn_score.detach().cpu().exp()
+        self.attention_score = attn_score.cpu().detach().exp()
 
         # Compute attented vector h_t^* [B, T, H] = [B, T, S] * [B, S, H]
         attented_vector = torch.bmm(attn_score.exp(), text.vector)
