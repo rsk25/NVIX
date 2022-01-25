@@ -31,8 +31,8 @@ class PointerGeneratorHead(nn.Module):
 
         self.log_sigmoid = nn.LogSigmoid()
 
-        # attribute for saving attention score
-        self.attention_score = torch.Tensor()
+        # attribute for saving attention score -> Element type: torch.Tensor
+        self.attention_scores = []
 
 
     def _compute_attention(self, text: Encoded, decoded: Encoded,
@@ -44,15 +44,12 @@ class PointerGeneratorHead(nn.Module):
         attn_score, new_key = self.encoder_attention.forward(query=decoded.vector, key=text.vector,
                                                              key_ignorance_mask=text.pad, prev_key=prev_key,
                                                              head_at_last=True, is_self=False)
-
+        
         # Apply softmax
         attn_score = logsoftmax(attn_score.squeeze(-1))
 
         # Set score as zero on padding in decoded.
         attn_score = attn_score.masked_fill(decoded.pad.unsqueeze(-1), NEG_INF)
-
-        # save the computed attention score
-        self.attention_score = attn_score.cpu().detach().exp()
 
         # Compute attented vector h_t^* [B, T, H] = [B, T, S] * [B, S, H]
         attented_vector = torch.bmm(attn_score.exp(), text.vector)
@@ -118,5 +115,5 @@ class PointerGeneratorHead(nn.Module):
         # Add copying to generation & return as log-probability
         logprob = (copy_dist + gen_dist).log()
         logprob = logprob.masked_fill(torch.isfinite(logprob).logical_not(), NEG_INF)
-        return logprob, (new_key,)
+        return logprob, (new_key,), attn_score
         

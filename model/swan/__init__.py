@@ -68,7 +68,7 @@ class SWANBase(EPT):
         return self.config[MDL_EXPLANATION].get(MDL_X_SHUFFLE_ON_TRAIN, True)
 
     @property
-    def attention_score(self) -> torch.Tensor:
+    def attention_scores(self) -> torch.Tensor:
         return torch.stack(self.explanation_pghead.attention_scores)
 
     def _get_recombine_policy(self, size: int) -> List[Tuple[bool, bool]]:
@@ -129,7 +129,7 @@ class SWANBase(EPT):
             
             # save the computed attention score
             attn_score = attn_score.cpu().detach()
-            attn_score = attn_score.unsqueeze(0)
+            attn_score = attn_score[0]
             self.explanation_pghead.attention_scores.append(attn_score)
 
             # Append cache
@@ -138,7 +138,7 @@ class SWANBase(EPT):
 
             return expl_enc, key_value_cache, Prediction(predicted)
 
-    def _explanation_for_eval(self, max_len: int = EXPL_MAX, beam_size: int = EXPL_BEAM_SZ, **kwargs) -> List[Label]:
+    def _explanation_for_eval(self, max_len: int = EXPL_MAX, beam_size: int = 3, **kwargs) -> List[Label]:
         assert 'text' in kwargs
         # text: [B,S]
         text: Encoded = kwargs['text']
