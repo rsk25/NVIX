@@ -4,6 +4,8 @@ import torch
 
 from common.const.operand import RES_MAX
 
+OP_BEAM_SZ = 3
+EXPL_BEAM_SZ = 1
 
 def _length_penalty(score: float, seq_len: int, alpha: float):
     if alpha <= 0:

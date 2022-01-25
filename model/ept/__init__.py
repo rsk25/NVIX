@@ -11,7 +11,7 @@ from common.data import *
 from common.data.base import move_to
 from model.base.chkpt import CheckpointingModule
 from model.base.util import Squeeze, init_weights, mask_forward, logsoftmax, apply_module_dict
-from model.base.beamsearch import beam_search
+from model.base.beamsearch import beam_search, OP_BEAM_SZ
 from .attention import MultiheadAttentionWeights
 from .decoder import EquationDecoder
 from .encoder import TextEncoder
@@ -157,7 +157,7 @@ class EPT(CheckpointingModule):
 
         return new_cache, EquationPrediction.from_tensors(operator, operands)
 
-    def _equation_for_eval(self, max_len: int = RES_MAX, beam_size: int = 3, excluded_operators: set = None,
+    def _equation_for_eval(self, max_len: int = RES_MAX, beam_size: int = OP_BEAM_SZ, excluded_operators: set = None,
                            **kwargs) -> Equation:
         assert 'text' in kwargs
         assert 'number' in kwargs

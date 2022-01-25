@@ -1,4 +1,5 @@
 from typing import Tuple, List, Optional
+from model.ept import attention
 
 import torch
 from numpy.random import Generator, PCG64, randint
@@ -11,7 +12,7 @@ from common.const.pad import PAD_ID
 from common.data import Text, Equation, Explanation, Encoded, EquationPrediction, Label
 from common.data.base import move_to
 from model.base.util import init_weights, tie_lm_head_with_embed, logsoftmax
-from model.base.beamsearch import beam_search
+from model.base.beamsearch import beam_search, EXPL_BEAM_SZ
 from model.ept import *
 from .explain import ExplanationDecoder
 from .pg_head import PointerGeneratorHead
@@ -44,6 +45,7 @@ class SWANBase(EPT):
         self._is_a_number = self.explanation.tokenizer.encode('is a number.', add_special_tokens=False)
         self._recombine_policy = self._recombine_policy_default = None
         self._rng = Generator(PCG64(1))
+   
 
     @property
     def _sep_token(self) -> int:
@@ -67,7 +69,7 @@ class SWANBase(EPT):
 
     @property
     def attention_score(self) -> torch.Tensor:
-        return self.explanation_pghead.attention_score
+        return torch.stack(self.explanation_pghead.attention_scores)
 
     def _get_recombine_policy(self, size: int) -> List[Tuple[bool, bool]]:
         policy = self._recombine_policy
@@ -119,18 +121,24 @@ class SWANBase(EPT):
         if kwargs.get('no_pred', False):
             return expl_enc, key_value_cache, None
         else:
-            predicted, head_cache = \
+            predicted, head_cache, attn_score = \
                 self.explanation_pghead.forward(text=kwargs['text'], text_label=kwargs['text_label'],
                                                 prev_key=head_cache,
                                                 pad_value=self._pad_token, decoded=expl_enc[:, prefix_len:],
                                                 decoder_embedding=expl_emb[:, prefix_len:])
+            
+            # save the computed attention score
+            attn_score = attn_score.cpu().detach()
+            attn_score = attn_score.unsqueeze(0)
+            self.explanation_pghead.attention_scores.append(attn_score)
+
             # Append cache
             if key_value_cache is not None:
                 key_value_cache = key_value_cache + (head_cache,)
 
             return expl_enc, key_value_cache, Prediction(predicted)
 
-    def _explanation_for_eval(self, max_len: int = EXPL_MAX, beam_size: int = 5, **kwargs) -> List[Label]:
+    def _explanation_for_eval(self, max_len: int = EXPL_MAX, beam_size: int = EXPL_BEAM_SZ, **kwargs) -> List[Label]:
         assert 'text' in kwargs
         # text: [B,S]
         text: Encoded = kwargs['text']
