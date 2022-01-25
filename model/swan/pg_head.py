@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Any
 
 import torch
 from torch import nn
@@ -31,8 +31,16 @@ class PointerGeneratorHead(nn.Module):
 
         self.log_sigmoid = nn.LogSigmoid()
 
-        # attribute for saving attention score -> Element type: torch.Tensor
-        self.attention_scores = []
+        # attribute for saving certain calculated values
+        self.intermediate_values = {}
+
+
+    def _save_to_attribute(self, attr_key: str, value: torch.Tensor):
+        value = value.cpu().detach()
+        if attr_key not in self.intermediate_values:
+            self.intermediate_values.update({attr_key: [value]})
+        else:
+            self.intermediate_values[attr_key].append(value)
 
 
     def _compute_attention(self, text: Encoded, decoded: Encoded,
@@ -115,5 +123,9 @@ class PointerGeneratorHead(nn.Module):
         # Add copying to generation & return as log-probability
         logprob = (copy_dist + gen_dist).log()
         logprob = logprob.masked_fill(torch.isfinite(logprob).logical_not(), NEG_INF)
-        return logprob, (new_key,), attn_score
+
+        for attr, val in zip(['attn_score', 'copy_prob', 'copy_attn'], [attn_score, copy_prob, copy_attn]):
+            self._save_to_attribute(attr, val)
+
+        return logprob, (new_key,)
         

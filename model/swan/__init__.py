@@ -69,7 +69,16 @@ class SWANBase(EPT):
 
     @property
     def attention_scores(self) -> torch.Tensor:
-        return torch.stack(self.explanation_pghead.attention_scores)
+        return torch.stack(self.explanation_pghead.intermediate_values['attn_score'])
+
+    @property
+    def copy_probabilities(self) -> torch.Tensor:
+        return torch.stack(self.explanation_pghead.intermediate_values['copy_prob'])
+
+    @property
+    def copy_attention_scores(self) -> torch.Tensor:
+        return torch.stack(self.explanation_pghead.intermediate_values['copy_attn'])
+    
 
     def _get_recombine_policy(self, size: int) -> List[Tuple[bool, bool]]:
         policy = self._recombine_policy
@@ -121,16 +130,11 @@ class SWANBase(EPT):
         if kwargs.get('no_pred', False):
             return expl_enc, key_value_cache, None
         else:
-            predicted, head_cache, attn_score = \
+            predicted, head_cache = \
                 self.explanation_pghead.forward(text=kwargs['text'], text_label=kwargs['text_label'],
                                                 prev_key=head_cache,
                                                 pad_value=self._pad_token, decoded=expl_enc[:, prefix_len:],
                                                 decoder_embedding=expl_emb[:, prefix_len:])
-            
-            # save the computed attention score
-            attn_score = attn_score.cpu().detach()
-            attn_score = attn_score[0]
-            self.explanation_pghead.attention_scores.append(attn_score)
 
             # Append cache
             if key_value_cache is not None:
