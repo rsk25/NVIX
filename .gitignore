@@ -4,3 +4,4 @@ runs_copy/
 .vscode/
 .ipynb_checkpoints/
 .venv/
+*.png
