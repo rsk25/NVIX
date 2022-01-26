@@ -125,18 +125,20 @@ class Explanation(TypeBatchable):
         return {key + '_explanation': max([acc[key] for acc in accuracies])
                 for key in accuracies[0] if key.endswith('_acc')}
 
-    def to_human_readable(self, tokenizer=None) -> Dict[str, List[str]]:
-        return self.to_id_explanation_dict(tokenizer)
+    def to_human_readable(self, tokenizer=None, include_skip=False, skip_special_tokens=True) -> Dict[str, List[str]]:
+        return self.to_id_explanation_dict(tokenizer, include_skip, skip_special_tokens)
 
-    def to_id_explanation_dict(self, tokenizer=None) -> Dict[str, List[str]]:
+    def to_id_explanation_dict(self, tokenizer=None, include_skip: bool=False, skip_special_tokens: bool=True) -> Dict[str, List[str]]:
         explanations = defaultdict(list)
 
         for w in range(len(self.numbers)):
             for fmt, expl in [(NUM_FORMAT, self.numbers[w]),
                               (VAR_FORMAT, self.variables[w])]:
                 for nid, row in enumerate(expl.pad_fill(tokenizer.pad_token_id).tolist()):
-                    expl_n = tokenizer.decode(row, skip_special_tokens=True).strip()
-                    if expl_n != UNEXPLAINED_NUMBER:
+                    expl_n = tokenizer.decode(row, skip_special_tokens=skip_special_tokens).strip()
+                    if include_skip:
+                        explanations[fmt % nid].append(expl_n)
+                    elif expl_n != UNEXPLAINED_NUMBER:
                         explanations[fmt % nid].append(expl_n)
 
         return explanations
