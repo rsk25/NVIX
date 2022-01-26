@@ -13,7 +13,7 @@ from model.ept.attention import MultiheadAttentionWeights
 
 class PointerGeneratorHead(nn.Module):
     def __init__(self, hidden_dim: int = DEF_Q_HIDDEN, embed_dim: int = DEF_Q_EMBED, vocab_size: int = VOCAB_MAX,
-                 init_factor: float = 0.01):
+                 init_factor: float = 0.01, debug: bool = False):
         super().__init__()
 
         # Single-head attention score layer
@@ -31,7 +31,7 @@ class PointerGeneratorHead(nn.Module):
 
         self.log_sigmoid = nn.LogSigmoid()
 
-        # attribute for saving certain calculated values
+        self.debug = debug
         self.intermediate_values = {}
 
 
@@ -124,10 +124,8 @@ class PointerGeneratorHead(nn.Module):
         logprob = (copy_dist + gen_dist).log()
         logprob = logprob.masked_fill(torch.isfinite(logprob).logical_not(), NEG_INF)
 
-        ### rsk code ###
-        for attr, val in zip(['attn_score', 'copy_prob', 'copy_attn', 'copy_dist'], [attn_score, copy_prob, copy_attn, copy_dist]):
-            self._save_to_attribute(attr, val)
-        ################
+        if self.debug:
+            for attr, val in zip(['attn_score', 'copy_prob', 'copy_attn', 'copy_dist'], [attn_score, copy_prob, copy_attn, copy_dist]):
+                self._save_to_attribute(attr, val)
 
         return logprob, (new_key,)
-        

@@ -31,7 +31,8 @@ class SWANBase(EPT):
         self.explanation_pghead = PointerGeneratorHead(hidden_dim=self.equation.hidden_dim,
                                                        embed_dim=self.explanation.embed_dim,
                                                        vocab_size=self.encoder.model.config.vocab_size,
-                                                       init_factor=self.equation.init_factor)
+                                                       init_factor=self.equation.init_factor,
+                                                       debug=False)
         tie_lm_head_with_embed(self.explanation_pghead.generation_dist, self.explanation.embeddings.word_embeddings)
 
         # Variable counts (as regression problem)
