@@ -36,7 +36,7 @@ class PointerGeneratorHead(nn.Module):
 
 
     def _save_to_attribute(self, attr_key: str, value: torch.Tensor):
-        value = value.cpu().detach()
+        value = value.exp().cpu().detach()
         if attr_key not in self.intermediate_values:
             self.intermediate_values.update({attr_key: [value]})
         else:
@@ -124,8 +124,10 @@ class PointerGeneratorHead(nn.Module):
         logprob = (copy_dist + gen_dist).log()
         logprob = logprob.masked_fill(torch.isfinite(logprob).logical_not(), NEG_INF)
 
+        ### rsk code ###
         for attr, val in zip(['attn_score', 'copy_prob', 'copy_attn'], [attn_score, copy_prob, copy_attn]):
             self._save_to_attribute(attr, val)
+        ################
 
         return logprob, (new_key,)
         
