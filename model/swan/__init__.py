@@ -69,11 +69,11 @@ class SWANBase(EPT):
 
     @property
     def attention_scores(self) -> torch.Tensor:
-        return torch.stack(self.explanation_pghead.intermediate_values['attn_score'])
+        return torch.stack(self.explanation_pghead.intermediate_values['attn_score']).exp()
 
     @property
     def copy_probabilities(self) -> torch.Tensor:
-        return torch.stack(self.explanation_pghead.intermediate_values['copy_prob'])
+        return torch.stack(self.explanation_pghead.intermediate_values['copy_prob']).exp()
 
     @property
     def copy_attention_scores(self) -> torch.Tensor:

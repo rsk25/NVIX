@@ -36,7 +36,7 @@ class PointerGeneratorHead(nn.Module):
 
 
     def _save_to_attribute(self, attr_key: str, value: torch.Tensor):
-        value = value.exp().cpu().detach()
+        value = value.cpu().detach()
         if attr_key not in self.intermediate_values:
             self.intermediate_values.update({attr_key: [value]})
         else:
@@ -115,7 +115,7 @@ class PointerGeneratorHead(nn.Module):
                         continue
                     copy_dist[b, :, text_bs] += copy_attn[b, :, s]
         else:
-            copy_dist = torch.zeros_like(gen_dist).scatter_add(dim=-1, index=text_label, src=copy_attn)
+            copy_dist = torch.zeros_like(gen_dist).scatter_add(dim=-1, index=text_label.unsqueeze(), src=copy_attn)
 
         # Generating probability (P_gen * Vocab)
         gen_dist = (gen_dist + gen_prob).exp()
@@ -125,7 +125,7 @@ class PointerGeneratorHead(nn.Module):
         logprob = logprob.masked_fill(torch.isfinite(logprob).logical_not(), NEG_INF)
 
         ### rsk code ###
-        for attr, val in zip(['attn_score', 'copy_prob', 'copy_attn'], [attn_score, copy_prob, copy_attn]):
+        for attr, val in zip(['attn_score', 'copy_prob', 'copy_attn', 'copy_dist'], [attn_score, copy_prob, copy_attn, copy_dist]):
             self._save_to_attribute(attr, val)
         ################
 
