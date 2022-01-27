@@ -1,7 +1,18 @@
+# ignore all environment settings (IDE, jupyter, etc.)
 .idea/
 venv/
-runs_copy/
-.vscode/
-.ipynb_checkpoints/
 .venv/
+.vscode/
+
+# ignore all analysis settings
+runs_copy/
+*.ipynb_checkpoints/
+
+# ignore outputs of experiments
+runs/
 *.png
+
+# ignore cache
+*__pycache__/
+*.cached
+*.lock
