@@ -40,7 +40,7 @@ def _get_stats_of(values: List[int]) -> dict:
 
 
 class Dataset:
-    def __init__(self, path: str, langmodel: str = DEF_ENCODER, seed: int = 1, number_window: int = 5):
+    def __init__(self, path: str, langmodel: str = DEF_ENCODER, seed: int = 1, number_window: int = 5, include_skip: bool = False):
         from transformers import AutoTokenizer
 
         # List of problem items
@@ -62,6 +62,8 @@ class Dataset:
         self.tokenizer = AutoTokenizer.from_pretrained(self._langmodel)
         # RNG for shuffling
         self._rng = Generator(PCG64(seed))
+        # include skip
+        self.include_skip = include_skip
 
         # Read the dataset.
         cache_loaded = self._try_read_cache()
@@ -205,7 +207,7 @@ class Dataset:
     def get_all_explanations(self) -> List[str]:
         result = []
         for item in self._whole_items:
-            for value in item.explanation.to_id_explanation_dict(self.tokenizer).values():
+            for value in item.explanation.to_id_explanation_dict(self.tokenizer, include_skip=self.include_skip).values():
                 if value:
                     result += value
 

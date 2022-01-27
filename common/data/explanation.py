@@ -136,9 +136,7 @@ class Explanation(TypeBatchable):
                               (VAR_FORMAT, self.variables[w])]:
                 for nid, row in enumerate(expl.pad_fill(tokenizer.pad_token_id).tolist()):
                     expl_n = tokenizer.decode(row, skip_special_tokens=skip_special_tokens).strip()
-                    if include_skip:
-                        explanations[fmt % nid].append(expl_n)
-                    elif expl_n != UNEXPLAINED_NUMBER:
+                    if include_skip or expl_n != UNEXPLAINED_NUMBER:
                         explanations[fmt % nid].append(expl_n)
 
         return explanations
