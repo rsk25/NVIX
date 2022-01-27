@@ -1,32 +1,19 @@
 from pathlib import Path
-from common import dataset
 import torch
-from typing import Tuple, List, Optional
+from typing import List, Dict
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-
-from model.swan import SWANPhase1Only
-from model.base import chkpt
-from test_model import load_config, run_model_for_attention
-from common.dataset import Dataset
-from learner import *
-
-
-# 'Sears tower' problem
-SPLIT = 'dev'
-PROBLEM_IDX = 49
-BATCH_SIZE = 1
 
 
 def set_ckpt_path(dir: str, from_pretrained: bool=True):
     if from_pretrained:
-        return Path('.') / 'resource' / 'runs_copy' / dir
+        return Path('.') / 'runs_copy' / dir
     else:
         return Path('.') / 'resource' / dir
 
 
-def display_attention(sentence: List[str], explanation: Dict[str, List[str]], \
-                        attention: torch.Tensor, copy_probs: torch.Tensor, n_cols=1):
+def display_heatmap(sentence: List[str], explanation: Dict[str, List[str]], \
+                    attention: torch.Tensor, copy_probs: torch.Tensor, n_cols=1):
     n_rows = len(explanation)
     assert n_rows * n_cols == len(explanation)
 
@@ -86,40 +73,4 @@ def display_attention(sentence: List[str], explanation: Dict[str, List[str]], \
     plt.close()
 
 
-if __name__ == '__main__':
-    chpt_path = set_ckpt_path('best_SWAN_P1', from_pretrained=True)
-
-    # load pretrained
-    tokenizer = torch.load(chpt_path / 'tokenizer.pt')
-    checkpoint = torch.load(chpt_path / 'SWANPhase1Only.pt')
-    config = load_config(chpt_path)
-
-    # set seed
-    set_seed(config['seed'])
-
-    # create model instance
-    nvix = SWANPhase1Only.create_or_load(path=str(chpt_path), **config)
-    nvix.eval()
-
-    # load dataset
-    dataset_path = set_ckpt_path('dataset', from_pretrained=False)
-    test_data = Dataset(dataset_path / 'pen.json', number_window=3)
-    test_data.select_items_with_file(dataset_path / 'experiments' / 'pen' / SPLIT)
-
-    # load (single) batch
-    batch = test_data.get_minibatches(batch_size=BATCH_SIZE, for_testing= True)
-    
-    # get outputs from model
-    output = nvix(
-        text=batch[PROBLEM_IDX].text.to(nvix.device),
-        beam=3,
-        beam_expl=1
-    )
-    explanations = output['explanation'][0].to_human_readable(tokenizer=tokenizer)
-
-    display_attention(
-        sentence=batch[PROBLEM_IDX].text.raw[0].split(),
-        explanation=explanations,
-        attention=nvix.attention_scores,
-        copy_probs=nvix.copy_probabilities
-    )
+__all__ = ['set_ckpt_path', 'display_heatmap']
