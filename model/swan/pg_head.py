@@ -115,7 +115,7 @@ class PointerGeneratorHead(nn.Module):
                         continue
                     copy_dist[b, :, text_bs] += copy_attn[b, :, s]
         else:
-            copy_dist = torch.zeros_like(gen_dist).scatter_add(dim=-1, index=text_label.unsqueeze(), src=copy_attn)
+            copy_dist = torch.zeros_like(gen_dist).scatter_add(dim=-1, index=text_label.unsqueeze(1).expand(copy_attn.shape), src=copy_attn)
 
         # Generating probability (P_gen * Vocab)
         gen_dist = (gen_dist + gen_prob).exp()
@@ -125,7 +125,8 @@ class PointerGeneratorHead(nn.Module):
         logprob = logprob.masked_fill(torch.isfinite(logprob).logical_not(), NEG_INF)
 
         if self.debug:
-            for attr, val in zip(['attn_score', 'copy_prob', 'copy_attn', 'copy_dist'], [attn_score, copy_prob, copy_attn, copy_dist]):
+            logprob_centers = logprob[:, :, [101, 1996, 4578, 1997, 1996, 18493, 3578, 102]]
+            for attr, val in zip(['attn_score', 'copy_prob', 'copy_attn', 'logprob'], [attn_score, copy_prob, copy_attn, logprob_centers]):
                 self._save_to_attribute(attr, val)
 
         return logprob, (new_key,)

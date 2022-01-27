@@ -68,17 +68,13 @@ class SWANBase(EPT):
     def _shuffle_on_training(self) -> bool:
         return self.config[MDL_EXPLANATION].get(MDL_X_SHUFFLE_ON_TRAIN, True)
 
-    @property
-    def attention_scores(self) -> torch.Tensor:
-        return torch.stack(self.explanation_pghead.intermediate_values['attn_score']).exp()
 
-    @property
-    def copy_probabilities(self) -> torch.Tensor:
-        return torch.stack(self.explanation_pghead.intermediate_values['copy_prob']).exp()
-
-    @property
-    def copy_attention_scores(self) -> torch.Tensor:
-        return torch.stack(self.explanation_pghead.intermediate_values['copy_attn'])
+    def inter_values(self, type: str, is_log: bool=True) -> torch.Tensor:
+        scores = torch.stack(self.explanation_pghead.intermediate_values[type])
+        if is_log:
+            return scores.exp()
+        else:
+            return scores
     
 
     def _get_recombine_policy(self, size: int) -> List[Tuple[bool, bool]]:
@@ -332,6 +328,7 @@ class SWANBase(EPT):
 
             # 1-3-2. Run prediction for each target
             for key, kwg in generate_kwargs.items():
+                print(f'generating {key}..\n')
                 expl = self._explanation_for_eval(text=_text, text_label=text.tokens, **kwg)
                 return_value.update({
                     '%s_expl' % key: expl,
