@@ -12,8 +12,18 @@ def set_ckpt_path(dir: str, from_pretrained: bool=True):
         return Path('.') / 'resource' / dir
 
 
-def display_heatmap(sentence: List[str], explanation: Dict[str, List[str]], \
-                    attention: torch.Tensor, copy_probs: torch.Tensor, n_cols=1):
+def _save_figure(figure_name: str, format: str='png'):
+    file_name = Path('.') / 'figures' / f'{figure_name}.{format}'
+    plt.savefig(file_name, bbox_inches='tight', facecolor='white')
+
+
+def display_heatmap(sentence: List[str], 
+                    explanation: Dict[str, List[str]],
+                    attention: torch.Tensor, 
+                    copy_probs: torch.Tensor, 
+                    figure_name: str = None,
+                    n_cols=1):
+
     n_rows = len(explanation)
     assert n_rows * n_cols == len(explanation)
 
@@ -68,6 +78,9 @@ def display_heatmap(sentence: List[str], explanation: Dict[str, List[str]], \
         ax2.yaxis.set_major_locator(ticker.MultipleLocator(1))
 
         begin_idx = end_idx
+
+    if figure_name is not None:
+        _save_figure(figure_name)
 
     plt.show()
     plt.close()
