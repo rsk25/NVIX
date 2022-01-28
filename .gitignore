@@ -16,3 +16,6 @@ runs/
 *__pycache__/
 *.cached
 *.lock
+
+# ignore large directories (however, these directories are essential and must be downloaded from elsewhere)
+resource/bleurt/
