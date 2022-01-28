@@ -22,7 +22,7 @@ do
 	killall -9 -r 'ray::'
 	python train_model.py -name $EXPNAME\
 	  -data $DATA -exp $EXPERIMENT -model SWAN_P1 -enc $ENCODER \
-	  -cpu 1 -gpu 1 -iter $EPOCH -bsz 16 -lr 0.000625 0.00088 0.00125 0.00176 -warmup $WARMUP -win 3
+	  -cpu 1 -gpu 1 -iter $EPOCH -bsz 16 -lr 0.00176 -warmup $WARMUP -win 3 4 5 6 7 8 9 10
 #	python train_model.py -name $EXPNAME\
 #	  -data $DATA -exp $EXPERIMENT -model EPT SWAN SWAN_A SWAN_B SWAN_P1 -enc $ENCODER \
 #	  -cpu 1 -gpu 1 -iter $EPOCH -bsz 16 -lr 0.000625 0.00088 0.00125 0.00176 -warmup $WARMUP -win 3
