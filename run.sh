@@ -6,7 +6,7 @@ DATA=./resource/dataset/pen.json
 export TOKENIZERS_PARALLELISM=false
 export CUBLAS_WORKSPACE_CONFIG=:4096:8
 
-for SUBSET_TYPE in alg514-fold0 mawps-fold0 draw pen
+for SUBSET_TYPE in pen
 do
 	EXPNAME=${SUBSET_TYPE}_${ENCODER_SIZE}_$2
 	EXPERIMENT=./resource/experiments/${SUBSET_TYPE}
