@@ -17,7 +17,8 @@ class PointerGeneratorHead(nn.Module):
         super().__init__()
 
         # Single-head attention score layer
-        self.encoder_attention = MultiheadAttentionWeights(**{MDL_Q_HIDDEN: hidden_dim, MDL_Q_HEAD: num_head})
+        self.num_head = num_head
+        self.encoder_attention = MultiheadAttentionWeights(**{MDL_Q_HIDDEN: hidden_dim, MDL_Q_HEAD: self.num_head})
         if hidden_dim != embed_dim:
             self.hidden_to_embed = torch.nn.Linear(hidden_dim, embed_dim)
 
@@ -54,7 +55,10 @@ class PointerGeneratorHead(nn.Module):
                                                              head_at_last=True, is_self=False)
         
         # Apply softmax
-        attn_score = logsoftmax(attn_score.squeeze(-1))
+        if self.num_head == 1:
+            attn_score = logsoftmax(attn_score.squeeze(-1))
+        else:
+            attn_score = logsoftmax(attn_score)
 
         # Set score as zero on padding in decoded.
         attn_score = attn_score.masked_fill(decoded.pad.unsqueeze(-1), NEG_INF)
