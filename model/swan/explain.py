@@ -35,7 +35,6 @@ class ExplanationDecoder(CheckpointingModule):
 
         self.tokenizer = tokenizer
         self.embed_dim = model.config.embedding_size
-        self.num_pghead = model.config.head
 
         # Copy encoder and embeddings
         self.embeddings = model.embeddings
