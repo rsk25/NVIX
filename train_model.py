@@ -100,7 +100,7 @@ def build_configuration(args):
             MDL_EXPLANATION: {
                 MDL_ENCODER: args.encoder,
                 MDL_X_SHUFFLE_ON_TRAIN: args.explanation_shuffle,
-                MDL_Q_HEAD: args.explanation_head 
+                MDL_Q_HEAD: tune.grid_search(args.explanation_head)
             }
         },
         KEY_RESOURCE: {
