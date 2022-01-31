@@ -18,3 +18,4 @@ zss==1.2.0
 git+https://github.com/google-research/bleurt.git
 jupyter
 bertviz
+aioredis==1.3.1
