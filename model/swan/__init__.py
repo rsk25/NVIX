@@ -32,6 +32,7 @@ class SWANBase(EPT):
                                                        embed_dim=self.explanation.embed_dim,
                                                        vocab_size=self.encoder.model.config.vocab_size,
                                                        init_factor=self.equation.init_factor,
+                                                       num_head=self.explanation.num_pghead,
                                                        debug=False)
         tie_lm_head_with_embed(self.explanation_pghead.generation_dist, self.explanation.embeddings.word_embeddings)
 

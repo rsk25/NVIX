@@ -13,11 +13,11 @@ from model.ept.attention import MultiheadAttentionWeights
 
 class PointerGeneratorHead(nn.Module):
     def __init__(self, hidden_dim: int = DEF_Q_HIDDEN, embed_dim: int = DEF_Q_EMBED, vocab_size: int = VOCAB_MAX,
-                 init_factor: float = 0.01, debug: bool = False):
+                 init_factor: float = 0.01, debug: bool = False, num_head: int = 1):
         super().__init__()
 
         # Single-head attention score layer
-        self.encoder_attention = MultiheadAttentionWeights(**{MDL_Q_HIDDEN: hidden_dim, MDL_Q_HEAD: 1})
+        self.encoder_attention = MultiheadAttentionWeights(**{MDL_Q_HIDDEN: hidden_dim, MDL_Q_HEAD: num_head})
         if hidden_dim != embed_dim:
             self.hidden_to_embed = torch.nn.Linear(hidden_dim, embed_dim)
 
