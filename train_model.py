@@ -41,6 +41,7 @@ def read_arguments():
     model.add_argument('--equation-layer', '-eqnL', type=int, default=[6], nargs='+')
     model.add_argument('--equation-head', '-eqnA', type=int, default=0)
     model.add_argument('--explanation-shuffle', '-expS', type=bool, default=True)
+    model.add_argument('--explanation-head', '-expA', type=int, default=1, nargs='+')
 
     log = parser.add_argument_group('Logger setup')
     log.add_argument('--log-path', '-log', type=str, default='./runs')
@@ -98,7 +99,8 @@ def build_configuration(args):
             },
             MDL_EXPLANATION: {
                 MDL_ENCODER: args.encoder,
-                MDL_X_SHUFFLE_ON_TRAIN: args.explanation_shuffle
+                MDL_X_SHUFFLE_ON_TRAIN: args.explanation_shuffle,
+                MDL_Q_HEAD: args.explanation_head 
             }
         },
         KEY_RESOURCE: {
