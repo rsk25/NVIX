@@ -49,7 +49,7 @@ class PointerGeneratorHead(nn.Module):
         # Text: [B, S, H]
         # Decoded: [B, T, H]
 
-        # Attention score: [B, T, S, N=1]
+        # Attention score: [B, T, S, N]
         attn_score, new_key = self.encoder_attention.forward(query=decoded.vector, key=text.vector,
                                                              key_ignorance_mask=text.pad, prev_key=prev_key,
                                                              head_at_last=True, is_self=False)
@@ -57,11 +57,12 @@ class PointerGeneratorHead(nn.Module):
         # Apply softmax
         if self.num_head == 1:
             attn_score = logsoftmax(attn_score.squeeze(-1))
+            # Set score as zero on padding in decoded.
+            attn_score = attn_score.masked_fill(decoded.pad.unsqueeze(-1), NEG_INF)
         else:
             attn_score = logsoftmax(attn_score)
-
-        # Set score as zero on padding in decoded.
-        attn_score = attn_score.masked_fill(decoded.pad.unsqueeze(-1), NEG_INF)
+            # Set score as zero on padding in decoded.
+            attn_score = attn_score.masked_fill(decoded.pad, NEG_INF)
 
         # Compute attented vector h_t^* [B, T, H] = [B, T, S] * [B, S, H]
         attented_vector = torch.bmm(attn_score.exp(), text.vector)
