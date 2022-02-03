@@ -254,7 +254,7 @@ class MultiheadAttention(nn.Module):
         # Flatten dim #0 and #1: [B, N, T, H/N] -> [BN, T, H/N].
         value = new_value.flatten(0, 1).contiguous()
 
-        # Compute output of weighted sum: [BN, S, H/N] -> [B, N, S, H/₩N] -> [B, S, N, H/N] -> [B, S, H].
+        # Compute output of weighted sum: [BN, S, H/N] -> [B, N, S, H/N] -> [B, S, N, H/N] -> [B, S, H].
         output = torch.bmm(attn, value) \
             .view(batch_size, self.attn.num_heads, query_len, self.attn.dim_head) \
             .transpose(1, 2).flatten(2, 3).contiguous()
