@@ -32,6 +32,8 @@ class PointerGeneratorHead(nn.Module):
 
         self.log_sigmoid = nn.LogSigmoid()
 
+        self.linear_v = nn.Linear(self.encoder_attention.hidden_dim, self.encoder_attention.hidden_dim)
+
         self.debug = debug
         self.intermediate_values = {}
 
@@ -44,6 +46,22 @@ class PointerGeneratorHead(nn.Module):
             self.intermediate_values[attr_key].append(value)
 
 
+    def _transform_value(self, value, batch_size):
+            # Retrieve shape
+            value_batch, key_len = value.shape[:2]
+
+            # Pass linear and transpose value matrix: [1 or B, T, N, H/N] -> [1 or B, N, T, H/N].
+            value = self.linear_v(value) \
+                .view(value_batch, key_len, self.num_heads, self.encoder_attention.dim_head).transpose(1, 2)
+
+            # If value has shape [1, *], expand it.
+            if value_batch == 1:
+                value = value.expand(batch_size, -1, -1, -1)
+
+            # [B, N, T, H/N]
+            return value
+
+
     def _compute_attention(self, text: Encoded, decoded: Encoded,
                            prev_key: torch.Tensor = None) -> Tuple[torch.Tensor, ...]:
         # Text: [B, S, H]
@@ -51,21 +69,49 @@ class PointerGeneratorHead(nn.Module):
 
         # Attention score: [B, T, S, N]
         attn_score, new_key = self.encoder_attention.forward(query=decoded.vector, key=text.vector,
-                                                             key_ignorance_mask=text.pad, prev_key=prev_key,
-                                                             head_at_last=True, is_self=False)
-        
-        # Apply softmax
+                                                            key_ignorance_mask=text.pad, prev_key=prev_key,
+                                                            head_at_last=True, is_self=False)
+
         if self.num_head == 1:
+            # Apply softmax: [B, T, S, N=1] -> [B, T, S]
             attn_score = logsoftmax(attn_score.squeeze(-1))
             # Set score as zero on padding in decoded.
             attn_score = attn_score.masked_fill(decoded.pad.unsqueeze(-1), NEG_INF)
+            # Compute attented vector h_t^* [B, T, H] = [B, T, S] * [B, S, H]
+            attented_vector = torch.bmm(attn_score.exp(), text.vector)
+            
         else:
-            attn_score = logsoftmax(attn_score)
-            # Set score as zero on padding in decoded.
-            attn_score = attn_score.masked_fill(decoded.pad, NEG_INF)
+            print(f"attention shape (before logsoftmax): {attn_score.shape}")
+            _batch_size, _key_len, _query_len, _ = attn_score.shape
+            _embed_dim = text.vector.size(dim=2)
 
-        # Compute attented vector h_t^* [B, T, H] = [B, T, S] * [B, S, H]
-        attented_vector = torch.bmm(attn_score.exp(), text.vector)
+            # Apply softmax: [B, T, S, N],
+            attn_score = logsoftmax(attn_score)
+            
+            print(f"decode.pad shape: {decoded.pad.shape}")
+            print(f"attn_shape (before BMM): {attn_score.shape}")
+            print(f"text.vector shape: {text.vector.shape}")
+
+            # Set score as zero on padding in decoded.
+            attn_score = attn_score.masked_fill(decoded.pad.unsqueeze(-1).unsqueeze(-1), NEG_INF)
+            # Reshape attention scores to [B, T, S, N] -> [B, N, T, S] -> [BN, T, S]
+            attn_score = attn_score.permute(0, 3, 1, 2).flatten(0,1).contiguous()
+            # Reshape text embedding to [B, S, H] -> [B, S, H/N, N] -> [B, N, S, H/N] -> [BN, S, H/N]
+            new_value = self._transform_value(text.vector, _batch_size)
+            value = new_value.flatten(0, 1).contiguous()
+
+            # new_value = text.vector.view(_batch_size, _query_len, _embed_dim // self.num_head, self.num_head).permute(0, 3, 1, 2).flatten(0,1).contiguous()
+            
+            # First, compute as [BN, T, S]*[BN, S, H/N] = [BN, T, H/N], 
+            # then, reshape to [BN, T, H/N] -> [B, N, T, H/N] -> [B, T, H/N, N] -> [B, T, H]
+            # Finally, reshape attented vector so that h_t^* [B, T, H] = [B, T, S] * [B, S, H]
+            attented_vector = torch.bmm(attn_score.exp(), value) \
+                                   .view(_batch_size, self.num_head, _key_len, _embed_dim // self.num_head) \
+                                   .permute(0, 2, 3, 1).flatten(2, 3).contiguous()
+            
+            print(f"attented_vectcor shape: {attented_vector.shape}")
+            print(f"new_key shape: {new_key.shape}")
+            print(f"attn_score shape: {attn_score.shape}")
 
         return attented_vector, new_key, attn_score
 
@@ -107,6 +153,7 @@ class PointerGeneratorHead(nn.Module):
         text_label = text_label.indices
 
         # Copying probability
+        print(f"Before calculating copy_attn: attn_score={attn_score.shape}, copy_prob={copy_prob.shape}")
         copy_attn = (attn_score + copy_prob).exp()
         
         if torch.are_deterministic_algorithms_enabled():
