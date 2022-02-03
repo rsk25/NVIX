@@ -69,7 +69,7 @@ class ExplanationDecoder(CheckpointingModule):
         is_cached = (not self.training) and (cached is not None)
 
         # Compute input embedding
-        word_emb, full_emb, prefix_len = self.build_decoder_input(expl_label, target)
+        word_emb, full_emb, prefix_len = self.build_decoder_input(expl_label, target) # target <- window prompt
 
         # Compute hidden state vectors
         encoded, cached = self.build_decoder_context(full_emb, text, cached)
