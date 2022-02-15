@@ -1,0 +1,88 @@
+[01/31 00:53:01] ========================= CMD ARGUMENT =============================
+[01/31 00:53:01] train_model.py -name pen_base_220131_095300 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[01/31 00:58:20] ========================= CMD ARGUMENT =============================
+[01/31 00:58:20] train_model.py -name pen_base_220131_095900 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[01/31 01:02:56] ========================= CMD ARGUMENT =============================
+[01/31 01:02:56] train_model.py -name pen_base_220131_100300 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[01/31 01:08:58] ========================= CMD ARGUMENT =============================
+[01/31 01:08:58] train_model.py -name pen_base_220131_100900 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[01/31 03:14:33] ========================= CMD ARGUMENT =============================
+[01/31 03:14:33] train_model.py -name pen_base_220131_121500 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[01/31 03:15:01] ========================= DEV. RESULTS =============================
+[01/31 03:15:01] Hyperparameter search is finished!
+[01/31 03:15:01] 	Trial eb876_00000 (0_layer=6,head=1,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[01/31 03:15:01] 	Trial eb876_00001 (1_layer=6,head=2,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[01/31 03:15:01] 	Trial eb876_00002 (2_layer=6,head=4,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[01/31 03:15:01] 	Trial eb876_00003 (3_layer=6,head=8,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[01/31 03:20:28] ========================= CMD ARGUMENT =============================
+[01/31 03:20:28] train_model.py -name pen_base_220131_122000 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[01/31 04:37:57] ========================= CMD ARGUMENT =============================
+[01/31 04:37:57] train_model.py -name pen_base_220131_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[01/31 04:40:16] ========================= CMD ARGUMENT =============================
+[01/31 04:40:16] train_model.py -name pen_base_220131_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 08:41:47] ========================= CMD ARGUMENT =============================
+[02/01 08:41:47] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 08:50:27] ========================= CMD ARGUMENT =============================
+[02/01 08:50:27] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 08:55:40] ========================= CMD ARGUMENT =============================
+[02/01 08:55:40] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 09:01:56] ========================= CMD ARGUMENT =============================
+[02/01 09:01:56] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 09:13:06] ========================= CMD ARGUMENT =============================
+[02/01 09:13:06] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 09:19:21] ========================= CMD ARGUMENT =============================
+[02/01 09:19:21] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 09:33:43] ========================= CMD ARGUMENT =============================
+[02/01 09:33:43] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 09:46:45] ========================= CMD ARGUMENT =============================
+[02/01 09:46:45] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 14:23:23] ========================= CMD ARGUMENT =============================
+[02/01 14:23:23] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 14:28:28] ========================= CMD ARGUMENT =============================
+[02/01 14:28:28] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 14:29:35] ========================= CMD ARGUMENT =============================
+[02/01 14:29:35] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 14:39:01] ========================= CMD ARGUMENT =============================
+[02/01 14:39:01] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 14:49:40] ========================= CMD ARGUMENT =============================
+[02/01 14:49:40] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 14:50:15] ========================= DEV. RESULTS =============================
+[02/01 14:50:15] Hyperparameter search is finished!
+[02/01 14:50:15] 	Trial 31427_00000 (0_layer=6,head=1,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[02/01 14:50:15] 	Trial 31427_00001 (1_layer=6,head=2,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[02/01 14:50:15] 	Trial 31427_00002 (2_layer=6,head=4,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[02/01 14:50:15] 	Trial 31427_00003 (3_layer=6,head=8,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[02/01 14:56:14] ========================= CMD ARGUMENT =============================
+[02/01 14:56:14] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 14:56:48] ========================= DEV. RESULTS =============================
+[02/01 14:56:48] Hyperparameter search is finished!
+[02/01 14:56:48] 	Trial 1b9e6_00000 (0_layer=6,head=1,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[02/01 14:56:48] 	Trial 1b9e6_00001 (1_layer=6,head=2,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[02/01 14:56:48] 	Trial 1b9e6_00002 (2_layer=6,head=4,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[02/01 14:56:48] 	Trial 1b9e6_00003 (3_layer=6,head=8,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[02/01 14:58:15] ========================= CMD ARGUMENT =============================
+[02/01 14:58:15] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 15:47:39] ========================= CMD ARGUMENT =============================
+[02/01 15:47:39] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 15:50:41] ========================= CMD ARGUMENT =============================
+[02/01 15:50:41] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 15:53:34] ========================= CMD ARGUMENT =============================
+[02/01 15:53:34] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/01 15:57:33] ========================= CMD ARGUMENT =============================
+[02/01 15:57:33] train_model.py -name pen_base_220201_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/09 11:33:19] ========================= CMD ARGUMENT =============================
+[02/09 11:33:19] train_model.py -name pen_base_220209_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/09 11:34:59] ========================= CMD ARGUMENT =============================
+[02/09 11:34:59] train_model.py -name pen_base_220209_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/09 11:36:43] ========================= CMD ARGUMENT =============================
+[02/09 11:36:43] train_model.py -name pen_base_220209_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/09 11:47:39] ========================= CMD ARGUMENT =============================
+[02/09 11:47:39] train_model.py -name pen_base_220209_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/09 11:52:49] ========================= CMD ARGUMENT =============================
+[02/09 11:52:49] train_model.py -name pen_base_220209_test1 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 -expA 1 2 4 8
+[02/11 21:05:07] ========================= DEV. RESULTS =============================
+[02/11 21:05:07] Hyperparameter search is finished!
+[02/11 21:05:07] 	Trial cfe91_00000 (0_layer=6,head=1,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): Correct 0.0000 on dev. set
+[02/11 21:05:07] 	Trial cfe91_00001 (1_layer=6,head=2,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): Correct 0.0000 on dev. set
+[02/11 21:05:07] 	Trial cfe91_00002 (2_layer=6,head=4,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): Correct 0.0000 on dev. set
+[02/11 21:05:07] 	Trial cfe91_00003 (3_layer=6,head=8,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): Correct 0.0000 on dev. set

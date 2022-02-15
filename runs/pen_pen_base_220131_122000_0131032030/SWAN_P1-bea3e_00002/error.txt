@@ -1,0 +1,39 @@
+Failure # 1 (occurred at 2022-01-31_03-21-02)
+Traceback (most recent call last):
+  File "/home/cocochanel/venv/lib/python3.8/site-packages/ray/tune/trial_runner.py", line 702, in _process_trial
+    results = self.trial_executor.fetch_result(trial)
+  File "/home/cocochanel/venv/lib/python3.8/site-packages/ray/tune/ray_trial_executor.py", line 686, in fetch_result
+    result = ray.get(trial_future[0], timeout=DEFAULT_GET_TIMEOUT)
+  File "/home/cocochanel/venv/lib/python3.8/site-packages/ray/_private/client_mode_hook.py", line 47, in wrapper
+    return func(*args, **kwargs)
+  File "/home/cocochanel/venv/lib/python3.8/site-packages/ray/worker.py", line 1481, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(RuntimeError): [36mray::SupervisedTrainer.train_buffered()[39m (pid=179100, ip=147.46.20.52)
+  File "python/ray/_raylet.pyx", line 505, in ray._raylet.execute_task
+  File "python/ray/_raylet.pyx", line 449, in ray._raylet.execute_task.function_executor
+  File "/home/cocochanel/venv/lib/python3.8/site-packages/ray/_private/function_manager.py", line 556, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "/home/cocochanel/venv/lib/python3.8/site-packages/ray/tune/trainable.py", line 173, in train_buffered
+    result = self.train()
+  File "/home/cocochanel/venv/lib/python3.8/site-packages/ray/tune/trainable.py", line 232, in train
+    result = self.step()
+  File "/home/cocochanel/NVIX/learner/__init__.py", line 176, in step
+    report['train'] = self._update_module()
+  File "/home/cocochanel/NVIX/learner/__init__.py", line 402, in _update_module
+    out_dict = self._model.forward(**batch.to(self._model.device).as_dict())
+  File "/home/cocochanel/NVIX/model/swan/__init__.py", line 513, in forward
+    p1_external, p1_internal = self.forward_explanation(text, **kwargs)
+  File "/home/cocochanel/NVIX/model/swan/__init__.py", line 473, in forward_explanation
+    return_value.update(self.generate_expl_step103(text, beam=beam_expl, **return_value))
+  File "/home/cocochanel/NVIX/model/swan/__init__.py", line 310, in generate_expl_step103
+    enc, pred = self._explanation_batched_for_train(text=_text, text_label=text.tokens, **kwg)
+  File "/home/cocochanel/NVIX/model/swan/__init__.py", line 254, in _explanation_batched_for_train
+    self._explanation_for_train(text=text_b, text_label=text_label_b, expl_label=num_snippet_b,
+  File "/home/cocochanel/NVIX/model/swan/__init__.py", line 132, in _explanation_for_train
+    self.explanation_pghead.forward(text=kwargs['text'], text_label=kwargs['text_label'],
+  File "/home/cocochanel/NVIX/model/swan/pg_head.py", line 96, in forward
+    text_attented, new_key, attn_score = self._compute_attention(text, decoded, prev_key=prev_key)
+  File "/home/cocochanel/NVIX/model/swan/pg_head.py", line 60, in _compute_attention
+    attn_score = attn_score.masked_fill(decoded.pad.unsqueeze(-1), NEG_INF)
+RuntimeError: The size of tensor a (6) must match the size of tensor b (75) at non-singleton dimension 2
+
