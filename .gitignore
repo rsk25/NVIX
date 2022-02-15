@@ -9,8 +9,6 @@ runs_copy/
 *.ipynb_checkpoints/
 
 # ignore outputs of experiments
-runs/
-*.png
 
 # ignore cache
 *__pycache__/
