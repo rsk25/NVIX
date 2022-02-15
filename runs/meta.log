@@ -1,0 +1,50 @@
+[01/26 16:25:57] ========================= CMD ARGUMENT =============================
+[01/26 16:25:57] train_model.py -name pen_base_220127_012855 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 4 5 6 7
+[01/28 11:26:42] ========================= CMD ARGUMENT =============================
+[01/28 11:26:42] train_model.py -name alg514-fold0_base_220128_082640 -data ./resource/dataset/pen.json -exp ./resource/experiments/alg514-fold0 -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.000625 0.00088 0.00125 0.00176 -warmup 10 -win 3 4 5 6 7 8 9 10
+[01/28 11:26:55] ========================= DEV. RESULTS =============================
+[01/28 11:26:55] Hyperparameter search is finished!
+[01/28 11:26:55] 	Trial 2e2b8_00000 (0_layer=6,model=SWAN_P1,lr=0.000625,num_warmup_epochs=10.0,window=3): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00001 (1_layer=6,model=SWAN_P1,lr=0.00088,num_warmup_epochs=10.0,window=3): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00002 (2_layer=6,model=SWAN_P1,lr=0.00125,num_warmup_epochs=10.0,window=3): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00003 (3_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=3): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00004 (4_layer=6,model=SWAN_P1,lr=0.000625,num_warmup_epochs=10.0,window=4): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00005 (5_layer=6,model=SWAN_P1,lr=0.00088,num_warmup_epochs=10.0,window=4): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00006 (6_layer=6,model=SWAN_P1,lr=0.00125,num_warmup_epochs=10.0,window=4): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00007 (7_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=4): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00008 (8_layer=6,model=SWAN_P1,lr=0.000625,num_warmup_epochs=10.0,window=5): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00009 (9_layer=6,model=SWAN_P1,lr=0.00088,num_warmup_epochs=10.0,window=5): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00010 (10_layer=6,model=SWAN_P1,lr=0.00125,num_warmup_epochs=10.0,window=5): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00011 (11_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=5): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00012 (12_layer=6,model=SWAN_P1,lr=0.000625,num_warmup_epochs=10.0,window=6): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00013 (13_layer=6,model=SWAN_P1,lr=0.00088,num_warmup_epochs=10.0,window=6): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00014 (14_layer=6,model=SWAN_P1,lr=0.00125,num_warmup_epochs=10.0,window=6): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00015 (15_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=6): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00016 (16_layer=6,model=SWAN_P1,lr=0.000625,num_warmup_epochs=10.0,window=7): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00017 (17_layer=6,model=SWAN_P1,lr=0.00088,num_warmup_epochs=10.0,window=7): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00018 (18_layer=6,model=SWAN_P1,lr=0.00125,num_warmup_epochs=10.0,window=7): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00019 (19_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=7): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00020 (20_layer=6,model=SWAN_P1,lr=0.000625,num_warmup_epochs=10.0,window=8): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00021 (21_layer=6,model=SWAN_P1,lr=0.00088,num_warmup_epochs=10.0,window=8): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00022 (22_layer=6,model=SWAN_P1,lr=0.00125,num_warmup_epochs=10.0,window=8): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00023 (23_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=8): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00024 (24_layer=6,model=SWAN_P1,lr=0.000625,num_warmup_epochs=10.0,window=9): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00025 (25_layer=6,model=SWAN_P1,lr=0.00088,num_warmup_epochs=10.0,window=9): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00026 (26_layer=6,model=SWAN_P1,lr=0.00125,num_warmup_epochs=10.0,window=9): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00027 (27_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=9): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00028 (28_layer=6,model=SWAN_P1,lr=0.000625,num_warmup_epochs=10.0,window=10): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00029 (29_layer=6,model=SWAN_P1,lr=0.00088,num_warmup_epochs=10.0,window=10): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00030 (30_layer=6,model=SWAN_P1,lr=0.00125,num_warmup_epochs=10.0,window=10): FAILED
+[01/28 11:26:55] 	Trial 2e2b8_00031 (31_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=10): FAILED
+[01/28 11:27:19] ========================= CMD ARGUMENT =============================
+[01/28 11:27:19] train_model.py -name alg514-fold0_base_220128_082720 -data ./resource/dataset/pen.json -exp ./resource/experiments/alg514-fold0 -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 4 5 6 7 8 9 10
+[01/29 06:50:15] ========================= CMD ARGUMENT =============================
+[01/29 06:50:15] train_model.py -name pen_base_220120_165015 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 3 4 5 6 7 8 9 10
+[02/03 06:01:23] ========================= CMD ARGUMENT =============================
+[02/03 06:01:23] train_model.py -name pen_base_220203_150155 -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 7 8 9 10
+[02/05 16:34:31] ========================= DEV. RESULTS =============================
+[02/05 16:34:31] Hyperparameter search is finished!
+[02/05 16:34:31] 	Trial b8ca4_00000 (0_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=7): Correct 0.0000 on dev. set
+[02/05 16:34:31] 	Trial b8ca4_00001 (1_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=8): Correct 0.0000 on dev. set
+[02/05 16:34:31] 	Trial b8ca4_00002 (2_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=9): Correct 0.0000 on dev. set
+[02/05 16:34:31] 	Trial b8ca4_00003 (3_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=10): Correct 0.0000 on dev. set
