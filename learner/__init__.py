@@ -193,8 +193,14 @@ class SupervisedTrainer(Trainable):
         # Run scripts after updating
         report['after'] = self._after_update()
 
-        # Add metric shortcut of development set
+        # Add correctness metric shortcut of development set
         report['dev_correct'] = report.get(KEY_DEV, {}).get('correct', FLOAT_NAN)
+
+        # Add recall/precision metric shortcut of development set
+        dev_bleurt = report.get(KEY_DEV, {}).get('BLEURT', 0)
+        dev_bleu4 = report.get(KEY_DEV, {}).get('Bleu_4', 0)
+        dev_rougeL = report.get(KEY_DEV, {}).get('ROUGE_L', 0)
+        report['dev_rp_mean'] = (dev_bleu4 + dev_bleurt + dev_rougeL) / 3
 
         return report
 

@@ -162,7 +162,7 @@ if __name__ == '__main__':
                         config=build_configuration(args), local_dir=args.log_path, checkpoint_at_end=True,
                         checkpoint_freq=args.max_iter // 5, reuse_actors=True,
                         trial_dirname_creator=trial_dirname_creator_generator(), raise_on_failed_trial=False,
-                        metric='dev_correct', mode='max')
+                        metric='dev_rp_mean', mode='max')
 
     # Record trial information
     logger.info('========================= DEV. RESULTS =============================')
@@ -172,22 +172,39 @@ if __name__ == '__main__':
     best_configs = {}
     best_trials = {}
 
-    for trial in trials:
+    # for training single configuration
+    if len(trials) == 1:
+        trial = trials[0]
         if trial.status != Trial.TERMINATED:
             logger.info('\tTrial %10s (%-40s): FAILED', trial.trial_id, trial.experiment_tag)
-            continue
+            shutdown()
+        else:
+            last_score = trial.last_result['dev_rp_mean']
+            logger.info('Training complete. Saving configuration...')
 
-        last_score = trial.last_result['dev_correct']
-        logger.info('\tTrial %10s (%-40s): Correct %.4f on dev. set', trial.trial_id, trial.experiment_tag, last_score)
-
-        if is_nan_or_inf(last_score):
-            continue
-
-        model_cls = trial.config[KEY_MODEL][MODEL_CLS]
-        if best_scores[model_cls] < last_score:
+            model_cls = trial.config[KEY_MODEL][MODEL_CLS]
             best_scores[model_cls] = last_score
             best_configs[model_cls] = trial.config
             best_trials[model_cls] = trial
+
+    # for normal hyperparameter tuning
+    else:
+        for trial in trials:
+            if trial.status != Trial.TERMINATED:
+                logger.info('\tTrial %10s (%-40s): FAILED', trial.trial_id, trial.experiment_tag)
+                continue
+
+            last_score = trial.last_result['dev_rp_mean']
+            logger.info('\tTrial %10s (%-40s): Mean %.4f on dev. set', trial.trial_id, trial.experiment_tag, last_score)
+
+            if is_nan_or_inf(last_score):
+                continue
+
+            model_cls = trial.config[KEY_MODEL][MODEL_CLS]
+            if best_scores[model_cls] < last_score:
+                best_scores[model_cls] = last_score
+                best_configs[model_cls] = trial.config
+                best_trials[model_cls] = trial
 
     # Record the best configuration
     for cls, config in best_configs.items():
