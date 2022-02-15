@@ -72,7 +72,7 @@ class ExplanationDecoder(CheckpointingModule):
         word_emb, full_emb, prefix_len = self.build_decoder_input(expl_label, target) # target <- window prompt
 
         # Compute hidden state vectors
-        encoded, cached = self.build_decoder_context(full_emb, text, cached)
+        encoded, cached = self.build_decoder_context(full_emb, text, cached) # encoded: h_t in paper
 
         if is_cached:
             # Cached: we need only the last token (encoded has already been cut)
