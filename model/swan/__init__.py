@@ -328,7 +328,6 @@ class SWANBase(EPT):
 
             # 1-3-2. Run prediction for each target
             for key, kwg in generate_kwargs.items():
-                print(f'generating {key}..\n')
                 expl = self._explanation_for_eval(text=_text, text_label=text.tokens, **kwg)
                 return_value.update({
                     '%s_expl' % key: expl,
