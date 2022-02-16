@@ -97,6 +97,8 @@ class Text(TypeTensorBatchable, TypeSelectable):
 
     @classmethod
     def from_dict(cls, raw: dict, tokenizer, number_window: int) -> 'Text':
+        # Add <NUM> and </NUM> around numbers in text
+
         # Tokenize the text
         spaced, orig_to_new_wid = _add_space_around_number(raw['text'])
         tokens: List[int] = tokenizer.encode(spaced)

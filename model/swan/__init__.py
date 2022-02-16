@@ -63,6 +63,14 @@ class SWANBase(EPT):
     @property
     def _mask_token(self) -> int:
         return self.explanation.mask_id
+    
+    @property
+    def _num_start_token(self) -> int:
+        return self.explanation.num_start_id
+
+    @property
+    def _num_end_token(self) -> int:
+        return self.explanation.num_end_id
 
     @property
     def _shuffle_on_training(self) -> bool:

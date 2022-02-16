@@ -26,10 +26,17 @@ class ExplanationDecoder(CheckpointingModule):
         model = AutoModel.from_pretrained(encoder, add_cross_attention=True, is_decoder=True)
 
         tokenizer = AutoTokenizer.from_pretrained(encoder)
+
+        # Include special number tokens in the vocabulary
+        added_special_tokens = tokenizer.add_special_tokens({"additional_special_tokens":['<NUM>','</NUM>']})
+        model.resize_token_embeddings(tokenizer.vocab_size + added_special_tokens)
+
         self.pad_id = tokenizer.pad_token_id
         self.bos_id = tokenizer.cls_token_id
         self.eos_id = tokenizer.sep_token_id
         self.mask_id = tokenizer.mask_token_id
+        self.num_start_id = tokenizer.additional_special_tokens_ids[0]
+        self.num_end_id = tokenizer.additional_special_tokens_ids[1]
         self.tokens_ignored = {PAD_ID, self.eos_id}
         self.empty_sequence = tokenizer.encode(UNEXPLAINED_NUMBER, add_special_tokens=False)
 
