@@ -1,6 +1,6 @@
 import logging
 from argparse import ArgumentParser
-from os import cpu_count
+from os import cpu_count, environ
 from sys import argv
 
 from ray import tune, init, shutdown
@@ -14,6 +14,7 @@ from common.trial import trial_dirname_creator_generator
 from learner import *
 from model import MODELS, MODEL_CLS
 
+GPU_IDS = "0,1,2,3"
 CPU_FRACTION = 1.0
 GPU_FRACTION = 0.5
 
@@ -46,6 +47,7 @@ def read_arguments():
     log.add_argument('--log-path', '-log', type=str, default='./runs')
 
     work = parser.add_argument_group('Worker setup')
+    work.add_argument('--gpu-ids', '-ids', type=str, default=GPU_IDS)
     work.add_argument('--num-cpu', '-cpu', type=float, default=CPU_FRACTION)
     work.add_argument('--num-gpu', '-gpu', type=float, default=GPU_FRACTION)
 
@@ -142,6 +144,10 @@ if __name__ == '__main__':
     args = read_arguments()
     if not Path(args.log_path).exists():
         Path(args.log_path).mkdir(parents=True)
+            
+    # Set GPU device 
+    environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID" 
+    environ["CUDA_VISIBLE_DEVICES"] = args.gpu_ids
 
     # Enable logging system
     file_handler = logging.FileHandler(filename=Path(args.log_path, 'meta.log'), encoding='UTF-8')

@@ -135,7 +135,7 @@ class Text(TypeTensorBatchable, TypeSelectable):
                   for tok in tokens]
         assert len(tokens) == len(token_nids)
 
-        # Make snippet of numbers
+        # Make snippet of numbers ### rsk: add dependency parser here
         number_snippets = []
         for nid in range(max(token_nids) + 1):
             token_start = token_nids.index(nid)
@@ -148,7 +148,6 @@ class Text(TypeTensorBatchable, TypeSelectable):
             snippet_left = ([PAD_ID] * (number_window - len(snippet_left))) + snippet_left
             snippet_right = snippet_right + ([PAD_ID] * (number_window - len(snippet_right)))
             snippet = snippet_left + tokens[token_start:token_start + 1] + snippet_right
-
             number_snippets.append(snippet)
             assert len(number_snippets[-1]) == number_window * 2 + 1
 
