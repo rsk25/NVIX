@@ -48,3 +48,15 @@
 [02/05 16:34:31] 	Trial b8ca4_00001 (1_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=8): Correct 0.0000 on dev. set
 [02/05 16:34:31] 	Trial b8ca4_00002 (2_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=9): Correct 0.0000 on dev. set
 [02/05 16:34:31] 	Trial b8ca4_00003 (3_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=10): Correct 0.0000 on dev. set
+[02/28 05:31:58] ========================= CMD ARGUMENT =============================
+[02/28 05:31:58] train_model.py -name pen_base_220228_prompt_change_explain -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc microsoft/cocolm-base -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 1
+[02/28 05:32:03] ========================= DEV. RESULTS =============================
+[02/28 05:32:03] Hyperparameter search is finished!
+[02/28 05:32:03] 	Trial c0db5_00000 (0_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=1): FAILED
+[02/28 05:34:21] ========================= CMD ARGUMENT =============================
+[02/28 05:34:21] train_model.py -name pen_base_220228_prompt_change_explain -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 0 -ids 1
+[02/28 05:35:00] ========================= DEV. RESULTS =============================
+[02/28 05:35:00] Hyperparameter search is finished!
+[02/28 05:35:00] 	Trial 16885_00000 (0_layer=6,model=SWAN_P1,lr=0.00176,num_warmup_epochs=10.0,window=0): FAILED
+[02/28 08:55:02] ========================= CMD ARGUMENT =============================
+[02/28 08:55:02] train_model.py -name pen_base_220228_prompt_change_explain -data ./resource/dataset/pen.json -exp ./resource/experiments/pen -model SWAN_P1 -enc google/electra-base-discriminator -cpu 1 -gpu 1 -iter 500 -bsz 16 -lr 0.00176 -warmup 10 -win 0 -ids 1

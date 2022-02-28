@@ -135,7 +135,8 @@ class Text(TypeTensorBatchable, TypeSelectable):
                   for tok in tokens]
         assert len(tokens) == len(token_nids)
 
-        # Make snippet of numbers ### rsk: add dependency parser here
+        # Make snippet of numbers
+        # 22.02.28: only add numbers in snippet in order to make prompt: "what is [number]?"
         number_snippets = []
         for nid in range(max(token_nids) + 1):
             token_start = token_nids.index(nid)
