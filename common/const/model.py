@@ -1,6 +1,5 @@
 """ Encoder configurations """
 MDL_ENCODER = 'encoder'  #: ENCODER KEY
-#DEF_ENCODER = "microsoft/cocolm-base"
 DEF_ENCODER = 'google/electra-base-discriminator'  #: DEFAULT ENCODER VALUE
 
 """ Decoder configurations """
