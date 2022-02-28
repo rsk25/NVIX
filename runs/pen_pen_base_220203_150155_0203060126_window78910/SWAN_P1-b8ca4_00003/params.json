@@ -1,0 +1,55 @@
+{
+  "batch_size": 16,
+  "beam_for_equation": 3,
+  "beam_for_explanation": 5,
+  "dataset": "/home/cocochanel/NVIX/resource/dataset/pen.json",
+  "experiment": {
+    "dev": {
+      "period": 100,
+      "split_file": "/home/cocochanel/NVIX/resource/experiments/pen/dev"
+    },
+    "test": {
+      "period": 500,
+      "split_file": "/home/cocochanel/NVIX/resource/experiments/pen/test"
+    },
+    "train": {
+      "split_file": "/home/cocochanel/NVIX/resource/experiments/pen/train"
+    }
+  },
+  "grad_clip": 10.0,
+  "learner": {
+    "encoder": "google/electra-base-discriminator",
+    "equation": {
+      "head": 0,
+      "hidden_dim": 0,
+      "intermediate_dim": 0,
+      "layer": 6
+    },
+    "explanation": {
+      "encoder": "google/electra-base-discriminator",
+      "shuffle": true
+    },
+    "model": "SWAN_P1"
+  },
+  "optimizer": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "debias": true,
+    "eps": 1e-08,
+    "lr": 0.00176,
+    "type": "lamb"
+  },
+  "resource": {
+    "num_cpus": 1.0,
+    "num_gpus": 1.0
+  },
+  "scheduler": {
+    "num_total_epochs": 500,
+    "num_warmup_epochs": 10.0,
+    "type": "warmup-linear"
+  },
+  "seed": 1,
+  "window": 10
+}

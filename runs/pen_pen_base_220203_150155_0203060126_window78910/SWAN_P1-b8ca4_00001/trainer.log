@@ -1,0 +1,1738 @@
+Initializing SupervisedTrainer has been finished.
+
+--------------------  System specification ---------------------
+------------------------------------------------------------------
+CPU information
+Architecture:                    x86_64
+CPU op-mode(s):                  32-bit, 64-bit
+Byte Order:                      Little Endian
+Address sizes:                   43 bits physical, 48 bits virtual
+CPU(s):                          64
+On-line CPU(s) list:             0-63
+Thread(s) per core:              2
+Core(s) per socket:              32
+Socket(s):                       1
+NUMA node(s):                    1
+Vendor ID:                       AuthenticAMD
+CPU family:                      23
+Model:                           49
+Model name:                      AMD Ryzen Threadripper 3970X 32-Core Processor
+Stepping:                        0
+Frequency boost:                 enabled
+CPU MHz:                         2153.799
+CPU max MHz:                     3700.0000
+CPU min MHz:                     2200.0000
+BogoMIPS:                        7386.14
+Virtualization:                  AMD-V
+L1d cache:                       1 MiB
+L1i cache:                       1 MiB
+L2 cache:                        16 MiB
+L3 cache:                        128 MiB
+NUMA node0 CPU(s):               0-63
+Vulnerability Itlb multihit:     Not affected
+Vulnerability L1tf:              Not affected
+Vulnerability Mds:               Not affected
+Vulnerability Meltdown:          Not affected
+Vulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:        Mitigation; Full AMD retpoline, IBPB conditional, STIBP conditional, RSB filling
+Vulnerability Srbds:             Not affected
+Vulnerability Tsx async abort:   Not affected
+Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate sme ssbd mba sev ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr wbnoinvd arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif umip rdpid overflow_recov succor smca
+
+
+------------------------------------------------------------------
+Memory information
+RANGE                                  SIZE  STATE REMOVABLE   BLOCK
+0x0000000000000000-0x00000000bfffffff    3G online       yes    0-23
+0x0000000100000000-0x000000303fffffff  189G online       yes 32-1543
+
+Memory block size:       128M
+Total online memory:     192G
+Total offline memory:      0B
+
+
+------------------------------------------------------------------
+Linux distribution information
+Ubuntu 20.04.2 LTS
+Linux cracker 5.4.0-94-generic #106-Ubuntu SMP Thu Jan 6 23:58:14 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+
+
+------------------------------------------------------------------
+Graphic device information
+02:00.0 VGA compatible controller: NVIDIA Corporation Device 2204 (rev a1)
+02:00.1 Audio device: NVIDIA Corporation Device 1aef (rev a1)
+21:00.0 VGA compatible controller: NVIDIA Corporation Device 2204 (rev a1)
+21:00.1 Audio device: NVIDIA Corporation Device 1aef (rev a1)
+49:00.0 VGA compatible controller: NVIDIA Corporation Device 2204 (rev a1)
+49:00.1 Audio device: NVIDIA Corporation Device 1aef (rev a1)
+4a:00.0 VGA compatible controller: NVIDIA Corporation Device 2204 (rev a1)
+4a:00.1 Audio device: NVIDIA Corporation Device 1aef (rev a1)
+
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2020 NVIDIA Corporation
+Built on Wed_Jul_22_19:09:09_PDT_2020
+Cuda compilation tools, release 11.0, V11.0.221
+Build cuda_11.0_bu.TC445_37.28845127_0
+
+Thu Feb  3 06:02:00 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce RTX 3090    Off  | 00000000:02:00.0 Off |                  N/A |
+|  0%   32C    P2   229W / 350W |  14354MiB / 24268MiB |     41%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  GeForce RTX 3090    Off  | 00000000:21:00.0 Off |                  N/A |
+|  0%   28C    P2   108W / 350W |   2755MiB / 24268MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   2  GeForce RTX 3090    Off  | 00000000:49:00.0 Off |                  N/A |
+|  0%   29C    P2   104W / 350W |   2755MiB / 24268MiB |     10%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   3  GeForce RTX 3090    Off  | 00000000:4A:00.0 Off |                  N/A |
+|  0%   31C    P2   225W / 350W |  10205MiB / 24268MiB |     42%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A   1774286      C   ...dTrainer.train_buffered()    10497MiB |
+|    0   N/A  N/A   3776156      C   ...bb-b487-314025e6995f.json     3855MiB |
+|    1   N/A  N/A   1774290      C   ...ervisedTrainer.__init__()     2753MiB |
+|    2   N/A  N/A   1774308      C   ...ervisedTrainer.__init__()     2753MiB |
+|    3   N/A  N/A   1774301      C   ...dTrainer.train_buffered()    10203MiB |
++-----------------------------------------------------------------------------+
+
+
+------------------------------------------------------------------
+Python information
+Python 3.8.10
+Torch  1.8.1+cu111  with CUDA  11.1
+Package                      Version
+---------------------------- -----------
+absl-py                      1.0.0
+aiohttp                      3.7.4.post0
+aiohttp-cors                 0.7.0
+aioredis                     1.3.1
+argon2-cffi                  21.1.0
+astunparse                   1.6.3
+async-timeout                3.0.1
+attrs                        21.2.0
+backcall                     0.2.0
+bertviz                      1.2.0
+bleach                       4.1.0
+blessings                    1.7
+BLEURT                       0.0.2
+boto3                        1.20.37
+botocore                     1.23.37
+cachetools                   4.2.2
+certifi                      2020.12.5
+cffi                         1.15.0
+chardet                      4.0.0
+click                        7.1.2
+colorama                     0.4.4
+colorful                     0.5.4
+cycler                       0.10.0
+debugpy                      1.5.1
+decorator                    5.1.0
+defusedxml                   0.7.1
+entrypoints                  0.3
+filelock                     3.0.12
+flatbuffers                  2.0
+future                       0.18.2
+gast                         0.4.0
+google-api-core              1.30.0
+google-auth                  1.31.0
+google-auth-oauthlib         0.4.6
+google-pasta                 0.2.0
+googleapis-common-protos     1.53.0
+gpustat                      0.6.0
+grpcio                       1.38.0
+h5py                         3.6.0
+hiredis                      2.0.0
+huggingface-hub              0.0.8
+idna                         2.10
+importlib-metadata           4.10.1
+iniconfig                    1.1.1
+ipykernel                    6.5.0
+ipython                      7.29.0
+ipython-genutils             0.2.0
+ipywidgets                   7.6.5
+jedi                         0.18.0
+Jinja2                       3.0.2
+jmespath                     0.10.0
+joblib                       1.0.1
+jsonschema                   3.2.0
+jupyter                      1.0.0
+jupyter-client               7.0.6
+jupyter-console              6.4.0
+jupyter-core                 4.9.1
+jupyterlab-pygments          0.1.2
+jupyterlab-widgets           1.0.2
+keras                        2.7.0
+Keras-Preprocessing          1.1.2
+kiwisolver                   1.3.1
+libclang                     12.0.0
+Markdown                     3.3.6
+MarkupSafe                   2.0.1
+matplotlib                   3.4.2
+matplotlib-inline            0.1.3
+mistune                      0.8.4
+mlxtend                      0.18.0
+mpmath                       1.2.1
+msgpack                      1.0.2
+multidict                    5.1.0
+nbclient                     0.5.4
+nbconvert                    6.2.0
+nbformat                     5.1.3
+nest-asyncio                 1.5.1
+notebook                     6.4.5
+numpy                        1.20.2
+nvidia-ml-py3                7.352.0
+oauthlib                     3.1.1
+opencensus                   0.7.13
+opencensus-context           0.1.2
+opt-einsum                   3.3.0
+packaging                    20.9
+pandas                       1.2.3
+pandocfilters                1.5.0
+parso                        0.8.2
+pexpect                      4.8.0
+pickleshare                  0.7.5
+Pillow                       8.1.2
+pip                          21.3.1
+pluggy                       1.0.0
+prometheus-client            0.11.0
+prompt-toolkit               3.0.22
+protobuf                     3.17.3
+psutil                       5.8.0
+ptyprocess                   0.7.0
+py                           1.11.0
+py-spy                       0.3.7
+pyasn1                       0.4.8
+pyasn1-modules               0.2.8
+pycocoevalcap                1.2
+pycocotools                  2.0.4
+pycparser                    2.20
+pydantic                     1.8.2
+Pygments                     2.10.0
+pyparsing                    2.4.7
+pyrsistent                   0.17.3
+pytest                       6.2.5
+python-dateutil              2.8.1
+pytorch-ranger               0.1.1
+pytz                         2021.1
+PyYAML                       5.4.1
+pyzmq                        22.3.0
+qtconsole                    5.1.1
+QtPy                         1.11.2
+ray                          1.3.0
+redis                        3.5.3
+regex                        2021.4.4
+requests                     2.25.1
+requests-oauthlib            1.3.0
+rsa                          4.7.2
+s3transfer                   0.5.0
+sacremoses                   0.0.43
+scikit-learn                 0.24.2
+scipy                        1.6.2
+Send2Trash                   1.8.0
+sentencepiece                0.1.95
+setuptools                   54.1.2
+six                          1.15.0
+sympy                        1.8
+tabulate                     0.8.9
+tensorboard                  2.7.0
+tensorboard-data-server      0.6.1
+tensorboard-plugin-wit       1.8.1
+tensorboardX                 2.2
+tensorflow                   2.7.0
+tensorflow-estimator         2.7.0
+tensorflow-io-gcs-filesystem 0.23.1
+termcolor                    1.1.0
+terminado                    0.12.1
+testpath                     0.5.0
+tf-slim                      1.1.0
+threadpoolctl                2.1.0
+tokenizers                   0.10.3
+toml                         0.10.2
+torch                        1.8.1+cu111
+torch-optimizer              0.1.0
+torchtext                    0.8.0
+torchvision                  0.9.1+cu111
+tornado                      6.1
+tqdm                         4.59.0
+traitlets                    5.1.1
+transformers                 4.6.1
+typing-extensions            3.7.4.3
+urllib3                      1.26.4
+wcwidth                      0.2.5
+webencodings                 0.5.1
+Werkzeug                     2.0.2
+wheel                        0.36.2
+widgetsnbextension           3.5.2
+wrapt                        1.13.3
+yarl                         1.6.3
+zipp                         3.7.0
+zss                          1.2.0
+
+-------------------- Trainer configuration ---------------------
+batch_size: 16
+beam_for_equation: 3
+beam_for_explanation: 5
+dataset: /home/cocochanel/NVIX/resource/dataset/pen.json
+experiment:
+  dev:
+    period: 100
+    split_file: /home/cocochanel/NVIX/resource/experiments/pen/dev
+  test:
+    period: 500
+    split_file: /home/cocochanel/NVIX/resource/experiments/pen/test
+  train:
+    split_file: /home/cocochanel/NVIX/resource/experiments/pen/train
+grad_clip: 10.0
+learner:
+  encoder: google/electra-base-discriminator
+  equation:
+    head: 0
+    hidden_dim: 0
+    intermediate_dim: 0
+    layer: 6
+  explanation:
+    encoder: google/electra-base-discriminator
+    shuffle: true
+  model: SWAN_P1
+optimizer:
+  betas: !!python/tuple
+  - 0.9
+  - 0.999
+  debias: true
+  eps: 1.0e-08
+  lr: 0.00176
+  type: lamb
+resource:
+  num_cpus: 1.0
+  num_gpus: 1.0
+scheduler:
+  num_total_epochs: 500
+  num_warmup_epochs: 10.0
+  type: warmup-linear
+seed: 1
+window: 8
+
+--------------------   Model structure     ---------------------
+SWANPhase1Only(
+  (encoder): TextEncoder(
+    (model): ElectraModel(
+      (embeddings): ElectraEmbeddings(
+        (word_embeddings): Embedding(30522, 768, padding_idx=0)
+        (position_embeddings): Embedding(512, 768)
+        (token_type_embeddings): Embedding(2, 768)
+        (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+      (encoder): ElectraEncoder(
+        (layer): ModuleList(
+          (0): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (1): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (2): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (3): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (4): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (5): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (6): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (7): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (8): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (9): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (10): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (11): ElectraLayer(
+            (attention): ElectraAttention(
+              (self): ElectraSelfAttention(
+                (query): Linear(in_features=768, out_features=768, bias=True)
+                (key): Linear(in_features=768, out_features=768, bias=True)
+                (value): Linear(in_features=768, out_features=768, bias=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+              (output): ElectraSelfOutput(
+                (dense): Linear(in_features=768, out_features=768, bias=True)
+                (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+                (dropout): Dropout(p=0.1, inplace=False)
+              )
+            )
+            (intermediate): ElectraIntermediate(
+              (dense): Linear(in_features=768, out_features=3072, bias=True)
+            )
+            (output): ElectraOutput(
+              (dense): Linear(in_features=3072, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+        )
+      )
+    )
+  )
+  (equation): EquationDecoder(
+    (operator_word_embedding): Embedding(9, 768)
+    (operator_pos_embedding): PositionalEncoding()
+    (operand_source_embedding): Embedding(3, 768)
+    (constant_word_embedding): Embedding(23, 768)
+    (operator_norm): MaskedLayerNorm((768,), eps=1e-12, elementwise_affine=True)
+    (operand_norm): MaskedLayerNorm((768,), eps=1e-12, elementwise_affine=True)
+    (embed_to_hidden): Linear(in_features=2304, out_features=768, bias=True)
+    (shared_decoder_layer): TransformerLayer(
+      (attn): MultiheadAttention(
+        (attn): MultiheadAttentionWeights(
+          (linear_q): Linear(in_features=768, out_features=768, bias=True)
+          (linear_k): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (linear_v): Linear(in_features=768, out_features=768, bias=True)
+        (linear_out): Linear(in_features=768, out_features=768, bias=True)
+      )
+      (mem): MultiheadAttention(
+        (attn): MultiheadAttentionWeights(
+          (linear_q): Linear(in_features=768, out_features=768, bias=True)
+          (linear_k): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (linear_v): Linear(in_features=768, out_features=768, bias=True)
+        (linear_out): Linear(in_features=768, out_features=768, bias=True)
+      )
+      (lin_expand): Linear(in_features=768, out_features=3072, bias=True)
+      (lin_collapse): Linear(in_features=3072, out_features=768, bias=True)
+      (gelu): GELU()
+      (norm_attn): MaskedLayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (norm_mem): MaskedLayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (norm_out): MaskedLayerNorm((768,), eps=1e-12, elementwise_affine=True)
+    )
+  )
+  (operator): Linear(in_features=768, out_features=9, bias=True)
+  (operands): ModuleList(
+    (0): ModuleDict(
+      (0_attn): MultiheadAttentionWeights(
+        (linear_q): Linear(in_features=768, out_features=768, bias=True)
+        (linear_k): Linear(in_features=768, out_features=768, bias=True)
+      )
+      (1_mean): Squeeze(dim=-1)
+    )
+    (1): ModuleDict(
+      (0_attn): MultiheadAttentionWeights(
+        (linear_q): Linear(in_features=768, out_features=768, bias=True)
+        (linear_k): Linear(in_features=768, out_features=768, bias=True)
+      )
+      (1_mean): Squeeze(dim=-1)
+    )
+  )
+  (explanation): ExplanationDecoder(
+    (embeddings): ElectraEmbeddings(
+      (word_embeddings): Embedding(30522, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): ElectraEncoder(
+      (layer): ModuleList(
+        (0): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (1): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (2): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (3): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (4): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (5): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (6): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (7): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (8): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (9): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (10): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (11): ElectraLayer(
+          (attention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (crossattention): ElectraAttention(
+            (self): ElectraSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): ElectraSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): ElectraIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): ElectraOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+  )
+  (explanation_pghead): PointerGeneratorHead(
+    (encoder_attention): MultiheadAttentionWeights(
+      (linear_q): Linear(in_features=768, out_features=768, bias=True)
+      (linear_k): Linear(in_features=768, out_features=768, bias=True)
+    )
+    (generation_dist): Linear(in_features=768, out_features=30522, bias=True)
+    (generation_prob_linear): Linear(in_features=2304, out_features=1, bias=True)
+    (log_sigmoid): LogSigmoid()
+  )
+  (var_count_expand): Linear(in_features=768, out_features=3072, bias=True)
+  (var_count_predict): Linear(in_features=3072, out_features=9, bias=True)
+)
+--------------------   Model parameters    ---------------------
+encoder.model.embeddings.word_embeddings.weight: 23440896
+encoder.model.embeddings.position_embeddings.weight: 393216
+encoder.model.embeddings.token_type_embeddings.weight: 1536
+encoder.model.embeddings.LayerNorm.weight: 768
+encoder.model.embeddings.LayerNorm.bias: 768
+encoder.model.encoder.layer.0.attention.self.query.weight: 589824
+encoder.model.encoder.layer.0.attention.self.query.bias: 768
+encoder.model.encoder.layer.0.attention.self.key.weight: 589824
+encoder.model.encoder.layer.0.attention.self.key.bias: 768
+encoder.model.encoder.layer.0.attention.self.value.weight: 589824
+encoder.model.encoder.layer.0.attention.self.value.bias: 768
+encoder.model.encoder.layer.0.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.0.attention.output.dense.bias: 768
+encoder.model.encoder.layer.0.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.0.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.0.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.0.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.0.output.dense.weight: 2359296
+encoder.model.encoder.layer.0.output.dense.bias: 768
+encoder.model.encoder.layer.0.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.0.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.1.attention.self.query.weight: 589824
+encoder.model.encoder.layer.1.attention.self.query.bias: 768
+encoder.model.encoder.layer.1.attention.self.key.weight: 589824
+encoder.model.encoder.layer.1.attention.self.key.bias: 768
+encoder.model.encoder.layer.1.attention.self.value.weight: 589824
+encoder.model.encoder.layer.1.attention.self.value.bias: 768
+encoder.model.encoder.layer.1.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.1.attention.output.dense.bias: 768
+encoder.model.encoder.layer.1.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.1.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.1.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.1.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.1.output.dense.weight: 2359296
+encoder.model.encoder.layer.1.output.dense.bias: 768
+encoder.model.encoder.layer.1.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.1.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.2.attention.self.query.weight: 589824
+encoder.model.encoder.layer.2.attention.self.query.bias: 768
+encoder.model.encoder.layer.2.attention.self.key.weight: 589824
+encoder.model.encoder.layer.2.attention.self.key.bias: 768
+encoder.model.encoder.layer.2.attention.self.value.weight: 589824
+encoder.model.encoder.layer.2.attention.self.value.bias: 768
+encoder.model.encoder.layer.2.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.2.attention.output.dense.bias: 768
+encoder.model.encoder.layer.2.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.2.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.2.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.2.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.2.output.dense.weight: 2359296
+encoder.model.encoder.layer.2.output.dense.bias: 768
+encoder.model.encoder.layer.2.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.2.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.3.attention.self.query.weight: 589824
+encoder.model.encoder.layer.3.attention.self.query.bias: 768
+encoder.model.encoder.layer.3.attention.self.key.weight: 589824
+encoder.model.encoder.layer.3.attention.self.key.bias: 768
+encoder.model.encoder.layer.3.attention.self.value.weight: 589824
+encoder.model.encoder.layer.3.attention.self.value.bias: 768
+encoder.model.encoder.layer.3.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.3.attention.output.dense.bias: 768
+encoder.model.encoder.layer.3.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.3.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.3.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.3.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.3.output.dense.weight: 2359296
+encoder.model.encoder.layer.3.output.dense.bias: 768
+encoder.model.encoder.layer.3.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.3.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.4.attention.self.query.weight: 589824
+encoder.model.encoder.layer.4.attention.self.query.bias: 768
+encoder.model.encoder.layer.4.attention.self.key.weight: 589824
+encoder.model.encoder.layer.4.attention.self.key.bias: 768
+encoder.model.encoder.layer.4.attention.self.value.weight: 589824
+encoder.model.encoder.layer.4.attention.self.value.bias: 768
+encoder.model.encoder.layer.4.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.4.attention.output.dense.bias: 768
+encoder.model.encoder.layer.4.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.4.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.4.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.4.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.4.output.dense.weight: 2359296
+encoder.model.encoder.layer.4.output.dense.bias: 768
+encoder.model.encoder.layer.4.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.4.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.5.attention.self.query.weight: 589824
+encoder.model.encoder.layer.5.attention.self.query.bias: 768
+encoder.model.encoder.layer.5.attention.self.key.weight: 589824
+encoder.model.encoder.layer.5.attention.self.key.bias: 768
+encoder.model.encoder.layer.5.attention.self.value.weight: 589824
+encoder.model.encoder.layer.5.attention.self.value.bias: 768
+encoder.model.encoder.layer.5.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.5.attention.output.dense.bias: 768
+encoder.model.encoder.layer.5.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.5.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.5.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.5.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.5.output.dense.weight: 2359296
+encoder.model.encoder.layer.5.output.dense.bias: 768
+encoder.model.encoder.layer.5.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.5.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.6.attention.self.query.weight: 589824
+encoder.model.encoder.layer.6.attention.self.query.bias: 768
+encoder.model.encoder.layer.6.attention.self.key.weight: 589824
+encoder.model.encoder.layer.6.attention.self.key.bias: 768
+encoder.model.encoder.layer.6.attention.self.value.weight: 589824
+encoder.model.encoder.layer.6.attention.self.value.bias: 768
+encoder.model.encoder.layer.6.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.6.attention.output.dense.bias: 768
+encoder.model.encoder.layer.6.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.6.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.6.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.6.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.6.output.dense.weight: 2359296
+encoder.model.encoder.layer.6.output.dense.bias: 768
+encoder.model.encoder.layer.6.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.6.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.7.attention.self.query.weight: 589824
+encoder.model.encoder.layer.7.attention.self.query.bias: 768
+encoder.model.encoder.layer.7.attention.self.key.weight: 589824
+encoder.model.encoder.layer.7.attention.self.key.bias: 768
+encoder.model.encoder.layer.7.attention.self.value.weight: 589824
+encoder.model.encoder.layer.7.attention.self.value.bias: 768
+encoder.model.encoder.layer.7.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.7.attention.output.dense.bias: 768
+encoder.model.encoder.layer.7.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.7.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.7.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.7.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.7.output.dense.weight: 2359296
+encoder.model.encoder.layer.7.output.dense.bias: 768
+encoder.model.encoder.layer.7.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.7.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.8.attention.self.query.weight: 589824
+encoder.model.encoder.layer.8.attention.self.query.bias: 768
+encoder.model.encoder.layer.8.attention.self.key.weight: 589824
+encoder.model.encoder.layer.8.attention.self.key.bias: 768
+encoder.model.encoder.layer.8.attention.self.value.weight: 589824
+encoder.model.encoder.layer.8.attention.self.value.bias: 768
+encoder.model.encoder.layer.8.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.8.attention.output.dense.bias: 768
+encoder.model.encoder.layer.8.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.8.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.8.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.8.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.8.output.dense.weight: 2359296
+encoder.model.encoder.layer.8.output.dense.bias: 768
+encoder.model.encoder.layer.8.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.8.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.9.attention.self.query.weight: 589824
+encoder.model.encoder.layer.9.attention.self.query.bias: 768
+encoder.model.encoder.layer.9.attention.self.key.weight: 589824
+encoder.model.encoder.layer.9.attention.self.key.bias: 768
+encoder.model.encoder.layer.9.attention.self.value.weight: 589824
+encoder.model.encoder.layer.9.attention.self.value.bias: 768
+encoder.model.encoder.layer.9.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.9.attention.output.dense.bias: 768
+encoder.model.encoder.layer.9.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.9.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.9.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.9.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.9.output.dense.weight: 2359296
+encoder.model.encoder.layer.9.output.dense.bias: 768
+encoder.model.encoder.layer.9.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.9.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.10.attention.self.query.weight: 589824
+encoder.model.encoder.layer.10.attention.self.query.bias: 768
+encoder.model.encoder.layer.10.attention.self.key.weight: 589824
+encoder.model.encoder.layer.10.attention.self.key.bias: 768
+encoder.model.encoder.layer.10.attention.self.value.weight: 589824
+encoder.model.encoder.layer.10.attention.self.value.bias: 768
+encoder.model.encoder.layer.10.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.10.attention.output.dense.bias: 768
+encoder.model.encoder.layer.10.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.10.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.10.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.10.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.10.output.dense.weight: 2359296
+encoder.model.encoder.layer.10.output.dense.bias: 768
+encoder.model.encoder.layer.10.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.10.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.11.attention.self.query.weight: 589824
+encoder.model.encoder.layer.11.attention.self.query.bias: 768
+encoder.model.encoder.layer.11.attention.self.key.weight: 589824
+encoder.model.encoder.layer.11.attention.self.key.bias: 768
+encoder.model.encoder.layer.11.attention.self.value.weight: 589824
+encoder.model.encoder.layer.11.attention.self.value.bias: 768
+encoder.model.encoder.layer.11.attention.output.dense.weight: 589824
+encoder.model.encoder.layer.11.attention.output.dense.bias: 768
+encoder.model.encoder.layer.11.attention.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.11.attention.output.LayerNorm.bias: 768
+encoder.model.encoder.layer.11.intermediate.dense.weight: 2359296
+encoder.model.encoder.layer.11.intermediate.dense.bias: 3072
+encoder.model.encoder.layer.11.output.dense.weight: 2359296
+encoder.model.encoder.layer.11.output.dense.bias: 768
+encoder.model.encoder.layer.11.output.LayerNorm.weight: 768
+encoder.model.encoder.layer.11.output.LayerNorm.bias: 768
+equation.operator_pos_factor: 1
+equation.operand_source_factor: 1
+equation.operator_word_embedding.weight: 6912
+equation.operand_source_embedding.weight: 2304
+equation.constant_word_embedding.weight: 17664
+equation.operator_norm.weight: 768
+equation.operator_norm.bias: 768
+equation.operand_norm.weight: 768
+equation.operand_norm.bias: 768
+equation.embed_to_hidden.weight: 1769472
+equation.embed_to_hidden.bias: 768
+equation.shared_decoder_layer.attn.attn.linear_q.weight: 589824
+equation.shared_decoder_layer.attn.attn.linear_q.bias: 768
+equation.shared_decoder_layer.attn.attn.linear_k.weight: 589824
+equation.shared_decoder_layer.attn.attn.linear_k.bias: 768
+equation.shared_decoder_layer.attn.linear_v.weight: 589824
+equation.shared_decoder_layer.attn.linear_v.bias: 768
+equation.shared_decoder_layer.attn.linear_out.weight: 589824
+equation.shared_decoder_layer.attn.linear_out.bias: 768
+equation.shared_decoder_layer.mem.attn.linear_q.weight: 589824
+equation.shared_decoder_layer.mem.attn.linear_q.bias: 768
+equation.shared_decoder_layer.mem.attn.linear_k.weight: 589824
+equation.shared_decoder_layer.mem.attn.linear_k.bias: 768
+equation.shared_decoder_layer.mem.linear_v.weight: 589824
+equation.shared_decoder_layer.mem.linear_v.bias: 768
+equation.shared_decoder_layer.mem.linear_out.weight: 589824
+equation.shared_decoder_layer.mem.linear_out.bias: 768
+equation.shared_decoder_layer.lin_expand.weight: 2359296
+equation.shared_decoder_layer.lin_expand.bias: 3072
+equation.shared_decoder_layer.lin_collapse.weight: 2359296
+equation.shared_decoder_layer.lin_collapse.bias: 768
+equation.shared_decoder_layer.norm_attn.weight: 768
+equation.shared_decoder_layer.norm_attn.bias: 768
+equation.shared_decoder_layer.norm_mem.weight: 768
+equation.shared_decoder_layer.norm_mem.bias: 768
+equation.shared_decoder_layer.norm_out.weight: 768
+equation.shared_decoder_layer.norm_out.bias: 768
+operator.weight: 6912
+operator.bias: 9
+operands.0.0_attn.linear_q.weight: 589824
+operands.0.0_attn.linear_q.bias: 768
+operands.0.0_attn.linear_k.weight: 589824
+operands.0.0_attn.linear_k.bias: 768
+operands.1.0_attn.linear_q.weight: 589824
+operands.1.0_attn.linear_q.bias: 768
+operands.1.0_attn.linear_k.weight: 589824
+operands.1.0_attn.linear_k.bias: 768
+explanation.embeddings.word_embeddings.weight: 23440896
+explanation.embeddings.position_embeddings.weight: 393216
+explanation.embeddings.token_type_embeddings.weight: 1536
+explanation.embeddings.LayerNorm.weight: 768
+explanation.embeddings.LayerNorm.bias: 768
+explanation.encoder.layer.0.attention.self.query.weight: 589824
+explanation.encoder.layer.0.attention.self.query.bias: 768
+explanation.encoder.layer.0.attention.self.key.weight: 589824
+explanation.encoder.layer.0.attention.self.key.bias: 768
+explanation.encoder.layer.0.attention.self.value.weight: 589824
+explanation.encoder.layer.0.attention.self.value.bias: 768
+explanation.encoder.layer.0.attention.output.dense.weight: 589824
+explanation.encoder.layer.0.attention.output.dense.bias: 768
+explanation.encoder.layer.0.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.0.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.0.crossattention.self.query.weight: 589824
+explanation.encoder.layer.0.crossattention.self.query.bias: 768
+explanation.encoder.layer.0.crossattention.self.key.weight: 589824
+explanation.encoder.layer.0.crossattention.self.key.bias: 768
+explanation.encoder.layer.0.crossattention.self.value.weight: 589824
+explanation.encoder.layer.0.crossattention.self.value.bias: 768
+explanation.encoder.layer.0.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.0.crossattention.output.dense.bias: 768
+explanation.encoder.layer.0.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.0.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.0.intermediate.dense.weight: 2359296
+explanation.encoder.layer.0.intermediate.dense.bias: 3072
+explanation.encoder.layer.0.output.dense.weight: 2359296
+explanation.encoder.layer.0.output.dense.bias: 768
+explanation.encoder.layer.0.output.LayerNorm.weight: 768
+explanation.encoder.layer.0.output.LayerNorm.bias: 768
+explanation.encoder.layer.1.attention.self.query.weight: 589824
+explanation.encoder.layer.1.attention.self.query.bias: 768
+explanation.encoder.layer.1.attention.self.key.weight: 589824
+explanation.encoder.layer.1.attention.self.key.bias: 768
+explanation.encoder.layer.1.attention.self.value.weight: 589824
+explanation.encoder.layer.1.attention.self.value.bias: 768
+explanation.encoder.layer.1.attention.output.dense.weight: 589824
+explanation.encoder.layer.1.attention.output.dense.bias: 768
+explanation.encoder.layer.1.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.1.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.1.crossattention.self.query.weight: 589824
+explanation.encoder.layer.1.crossattention.self.query.bias: 768
+explanation.encoder.layer.1.crossattention.self.key.weight: 589824
+explanation.encoder.layer.1.crossattention.self.key.bias: 768
+explanation.encoder.layer.1.crossattention.self.value.weight: 589824
+explanation.encoder.layer.1.crossattention.self.value.bias: 768
+explanation.encoder.layer.1.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.1.crossattention.output.dense.bias: 768
+explanation.encoder.layer.1.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.1.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.1.intermediate.dense.weight: 2359296
+explanation.encoder.layer.1.intermediate.dense.bias: 3072
+explanation.encoder.layer.1.output.dense.weight: 2359296
+explanation.encoder.layer.1.output.dense.bias: 768
+explanation.encoder.layer.1.output.LayerNorm.weight: 768
+explanation.encoder.layer.1.output.LayerNorm.bias: 768
+explanation.encoder.layer.2.attention.self.query.weight: 589824
+explanation.encoder.layer.2.attention.self.query.bias: 768
+explanation.encoder.layer.2.attention.self.key.weight: 589824
+explanation.encoder.layer.2.attention.self.key.bias: 768
+explanation.encoder.layer.2.attention.self.value.weight: 589824
+explanation.encoder.layer.2.attention.self.value.bias: 768
+explanation.encoder.layer.2.attention.output.dense.weight: 589824
+explanation.encoder.layer.2.attention.output.dense.bias: 768
+explanation.encoder.layer.2.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.2.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.2.crossattention.self.query.weight: 589824
+explanation.encoder.layer.2.crossattention.self.query.bias: 768
+explanation.encoder.layer.2.crossattention.self.key.weight: 589824
+explanation.encoder.layer.2.crossattention.self.key.bias: 768
+explanation.encoder.layer.2.crossattention.self.value.weight: 589824
+explanation.encoder.layer.2.crossattention.self.value.bias: 768
+explanation.encoder.layer.2.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.2.crossattention.output.dense.bias: 768
+explanation.encoder.layer.2.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.2.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.2.intermediate.dense.weight: 2359296
+explanation.encoder.layer.2.intermediate.dense.bias: 3072
+explanation.encoder.layer.2.output.dense.weight: 2359296
+explanation.encoder.layer.2.output.dense.bias: 768
+explanation.encoder.layer.2.output.LayerNorm.weight: 768
+explanation.encoder.layer.2.output.LayerNorm.bias: 768
+explanation.encoder.layer.3.attention.self.query.weight: 589824
+explanation.encoder.layer.3.attention.self.query.bias: 768
+explanation.encoder.layer.3.attention.self.key.weight: 589824
+explanation.encoder.layer.3.attention.self.key.bias: 768
+explanation.encoder.layer.3.attention.self.value.weight: 589824
+explanation.encoder.layer.3.attention.self.value.bias: 768
+explanation.encoder.layer.3.attention.output.dense.weight: 589824
+explanation.encoder.layer.3.attention.output.dense.bias: 768
+explanation.encoder.layer.3.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.3.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.3.crossattention.self.query.weight: 589824
+explanation.encoder.layer.3.crossattention.self.query.bias: 768
+explanation.encoder.layer.3.crossattention.self.key.weight: 589824
+explanation.encoder.layer.3.crossattention.self.key.bias: 768
+explanation.encoder.layer.3.crossattention.self.value.weight: 589824
+explanation.encoder.layer.3.crossattention.self.value.bias: 768
+explanation.encoder.layer.3.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.3.crossattention.output.dense.bias: 768
+explanation.encoder.layer.3.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.3.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.3.intermediate.dense.weight: 2359296
+explanation.encoder.layer.3.intermediate.dense.bias: 3072
+explanation.encoder.layer.3.output.dense.weight: 2359296
+explanation.encoder.layer.3.output.dense.bias: 768
+explanation.encoder.layer.3.output.LayerNorm.weight: 768
+explanation.encoder.layer.3.output.LayerNorm.bias: 768
+explanation.encoder.layer.4.attention.self.query.weight: 589824
+explanation.encoder.layer.4.attention.self.query.bias: 768
+explanation.encoder.layer.4.attention.self.key.weight: 589824
+explanation.encoder.layer.4.attention.self.key.bias: 768
+explanation.encoder.layer.4.attention.self.value.weight: 589824
+explanation.encoder.layer.4.attention.self.value.bias: 768
+explanation.encoder.layer.4.attention.output.dense.weight: 589824
+explanation.encoder.layer.4.attention.output.dense.bias: 768
+explanation.encoder.layer.4.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.4.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.4.crossattention.self.query.weight: 589824
+explanation.encoder.layer.4.crossattention.self.query.bias: 768
+explanation.encoder.layer.4.crossattention.self.key.weight: 589824
+explanation.encoder.layer.4.crossattention.self.key.bias: 768
+explanation.encoder.layer.4.crossattention.self.value.weight: 589824
+explanation.encoder.layer.4.crossattention.self.value.bias: 768
+explanation.encoder.layer.4.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.4.crossattention.output.dense.bias: 768
+explanation.encoder.layer.4.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.4.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.4.intermediate.dense.weight: 2359296
+explanation.encoder.layer.4.intermediate.dense.bias: 3072
+explanation.encoder.layer.4.output.dense.weight: 2359296
+explanation.encoder.layer.4.output.dense.bias: 768
+explanation.encoder.layer.4.output.LayerNorm.weight: 768
+explanation.encoder.layer.4.output.LayerNorm.bias: 768
+explanation.encoder.layer.5.attention.self.query.weight: 589824
+explanation.encoder.layer.5.attention.self.query.bias: 768
+explanation.encoder.layer.5.attention.self.key.weight: 589824
+explanation.encoder.layer.5.attention.self.key.bias: 768
+explanation.encoder.layer.5.attention.self.value.weight: 589824
+explanation.encoder.layer.5.attention.self.value.bias: 768
+explanation.encoder.layer.5.attention.output.dense.weight: 589824
+explanation.encoder.layer.5.attention.output.dense.bias: 768
+explanation.encoder.layer.5.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.5.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.5.crossattention.self.query.weight: 589824
+explanation.encoder.layer.5.crossattention.self.query.bias: 768
+explanation.encoder.layer.5.crossattention.self.key.weight: 589824
+explanation.encoder.layer.5.crossattention.self.key.bias: 768
+explanation.encoder.layer.5.crossattention.self.value.weight: 589824
+explanation.encoder.layer.5.crossattention.self.value.bias: 768
+explanation.encoder.layer.5.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.5.crossattention.output.dense.bias: 768
+explanation.encoder.layer.5.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.5.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.5.intermediate.dense.weight: 2359296
+explanation.encoder.layer.5.intermediate.dense.bias: 3072
+explanation.encoder.layer.5.output.dense.weight: 2359296
+explanation.encoder.layer.5.output.dense.bias: 768
+explanation.encoder.layer.5.output.LayerNorm.weight: 768
+explanation.encoder.layer.5.output.LayerNorm.bias: 768
+explanation.encoder.layer.6.attention.self.query.weight: 589824
+explanation.encoder.layer.6.attention.self.query.bias: 768
+explanation.encoder.layer.6.attention.self.key.weight: 589824
+explanation.encoder.layer.6.attention.self.key.bias: 768
+explanation.encoder.layer.6.attention.self.value.weight: 589824
+explanation.encoder.layer.6.attention.self.value.bias: 768
+explanation.encoder.layer.6.attention.output.dense.weight: 589824
+explanation.encoder.layer.6.attention.output.dense.bias: 768
+explanation.encoder.layer.6.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.6.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.6.crossattention.self.query.weight: 589824
+explanation.encoder.layer.6.crossattention.self.query.bias: 768
+explanation.encoder.layer.6.crossattention.self.key.weight: 589824
+explanation.encoder.layer.6.crossattention.self.key.bias: 768
+explanation.encoder.layer.6.crossattention.self.value.weight: 589824
+explanation.encoder.layer.6.crossattention.self.value.bias: 768
+explanation.encoder.layer.6.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.6.crossattention.output.dense.bias: 768
+explanation.encoder.layer.6.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.6.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.6.intermediate.dense.weight: 2359296
+explanation.encoder.layer.6.intermediate.dense.bias: 3072
+explanation.encoder.layer.6.output.dense.weight: 2359296
+explanation.encoder.layer.6.output.dense.bias: 768
+explanation.encoder.layer.6.output.LayerNorm.weight: 768
+explanation.encoder.layer.6.output.LayerNorm.bias: 768
+explanation.encoder.layer.7.attention.self.query.weight: 589824
+explanation.encoder.layer.7.attention.self.query.bias: 768
+explanation.encoder.layer.7.attention.self.key.weight: 589824
+explanation.encoder.layer.7.attention.self.key.bias: 768
+explanation.encoder.layer.7.attention.self.value.weight: 589824
+explanation.encoder.layer.7.attention.self.value.bias: 768
+explanation.encoder.layer.7.attention.output.dense.weight: 589824
+explanation.encoder.layer.7.attention.output.dense.bias: 768
+explanation.encoder.layer.7.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.7.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.7.crossattention.self.query.weight: 589824
+explanation.encoder.layer.7.crossattention.self.query.bias: 768
+explanation.encoder.layer.7.crossattention.self.key.weight: 589824
+explanation.encoder.layer.7.crossattention.self.key.bias: 768
+explanation.encoder.layer.7.crossattention.self.value.weight: 589824
+explanation.encoder.layer.7.crossattention.self.value.bias: 768
+explanation.encoder.layer.7.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.7.crossattention.output.dense.bias: 768
+explanation.encoder.layer.7.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.7.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.7.intermediate.dense.weight: 2359296
+explanation.encoder.layer.7.intermediate.dense.bias: 3072
+explanation.encoder.layer.7.output.dense.weight: 2359296
+explanation.encoder.layer.7.output.dense.bias: 768
+explanation.encoder.layer.7.output.LayerNorm.weight: 768
+explanation.encoder.layer.7.output.LayerNorm.bias: 768
+explanation.encoder.layer.8.attention.self.query.weight: 589824
+explanation.encoder.layer.8.attention.self.query.bias: 768
+explanation.encoder.layer.8.attention.self.key.weight: 589824
+explanation.encoder.layer.8.attention.self.key.bias: 768
+explanation.encoder.layer.8.attention.self.value.weight: 589824
+explanation.encoder.layer.8.attention.self.value.bias: 768
+explanation.encoder.layer.8.attention.output.dense.weight: 589824
+explanation.encoder.layer.8.attention.output.dense.bias: 768
+explanation.encoder.layer.8.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.8.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.8.crossattention.self.query.weight: 589824
+explanation.encoder.layer.8.crossattention.self.query.bias: 768
+explanation.encoder.layer.8.crossattention.self.key.weight: 589824
+explanation.encoder.layer.8.crossattention.self.key.bias: 768
+explanation.encoder.layer.8.crossattention.self.value.weight: 589824
+explanation.encoder.layer.8.crossattention.self.value.bias: 768
+explanation.encoder.layer.8.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.8.crossattention.output.dense.bias: 768
+explanation.encoder.layer.8.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.8.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.8.intermediate.dense.weight: 2359296
+explanation.encoder.layer.8.intermediate.dense.bias: 3072
+explanation.encoder.layer.8.output.dense.weight: 2359296
+explanation.encoder.layer.8.output.dense.bias: 768
+explanation.encoder.layer.8.output.LayerNorm.weight: 768
+explanation.encoder.layer.8.output.LayerNorm.bias: 768
+explanation.encoder.layer.9.attention.self.query.weight: 589824
+explanation.encoder.layer.9.attention.self.query.bias: 768
+explanation.encoder.layer.9.attention.self.key.weight: 589824
+explanation.encoder.layer.9.attention.self.key.bias: 768
+explanation.encoder.layer.9.attention.self.value.weight: 589824
+explanation.encoder.layer.9.attention.self.value.bias: 768
+explanation.encoder.layer.9.attention.output.dense.weight: 589824
+explanation.encoder.layer.9.attention.output.dense.bias: 768
+explanation.encoder.layer.9.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.9.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.9.crossattention.self.query.weight: 589824
+explanation.encoder.layer.9.crossattention.self.query.bias: 768
+explanation.encoder.layer.9.crossattention.self.key.weight: 589824
+explanation.encoder.layer.9.crossattention.self.key.bias: 768
+explanation.encoder.layer.9.crossattention.self.value.weight: 589824
+explanation.encoder.layer.9.crossattention.self.value.bias: 768
+explanation.encoder.layer.9.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.9.crossattention.output.dense.bias: 768
+explanation.encoder.layer.9.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.9.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.9.intermediate.dense.weight: 2359296
+explanation.encoder.layer.9.intermediate.dense.bias: 3072
+explanation.encoder.layer.9.output.dense.weight: 2359296
+explanation.encoder.layer.9.output.dense.bias: 768
+explanation.encoder.layer.9.output.LayerNorm.weight: 768
+explanation.encoder.layer.9.output.LayerNorm.bias: 768
+explanation.encoder.layer.10.attention.self.query.weight: 589824
+explanation.encoder.layer.10.attention.self.query.bias: 768
+explanation.encoder.layer.10.attention.self.key.weight: 589824
+explanation.encoder.layer.10.attention.self.key.bias: 768
+explanation.encoder.layer.10.attention.self.value.weight: 589824
+explanation.encoder.layer.10.attention.self.value.bias: 768
+explanation.encoder.layer.10.attention.output.dense.weight: 589824
+explanation.encoder.layer.10.attention.output.dense.bias: 768
+explanation.encoder.layer.10.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.10.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.10.crossattention.self.query.weight: 589824
+explanation.encoder.layer.10.crossattention.self.query.bias: 768
+explanation.encoder.layer.10.crossattention.self.key.weight: 589824
+explanation.encoder.layer.10.crossattention.self.key.bias: 768
+explanation.encoder.layer.10.crossattention.self.value.weight: 589824
+explanation.encoder.layer.10.crossattention.self.value.bias: 768
+explanation.encoder.layer.10.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.10.crossattention.output.dense.bias: 768
+explanation.encoder.layer.10.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.10.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.10.intermediate.dense.weight: 2359296
+explanation.encoder.layer.10.intermediate.dense.bias: 3072
+explanation.encoder.layer.10.output.dense.weight: 2359296
+explanation.encoder.layer.10.output.dense.bias: 768
+explanation.encoder.layer.10.output.LayerNorm.weight: 768
+explanation.encoder.layer.10.output.LayerNorm.bias: 768
+explanation.encoder.layer.11.attention.self.query.weight: 589824
+explanation.encoder.layer.11.attention.self.query.bias: 768
+explanation.encoder.layer.11.attention.self.key.weight: 589824
+explanation.encoder.layer.11.attention.self.key.bias: 768
+explanation.encoder.layer.11.attention.self.value.weight: 589824
+explanation.encoder.layer.11.attention.self.value.bias: 768
+explanation.encoder.layer.11.attention.output.dense.weight: 589824
+explanation.encoder.layer.11.attention.output.dense.bias: 768
+explanation.encoder.layer.11.attention.output.LayerNorm.weight: 768
+explanation.encoder.layer.11.attention.output.LayerNorm.bias: 768
+explanation.encoder.layer.11.crossattention.self.query.weight: 589824
+explanation.encoder.layer.11.crossattention.self.query.bias: 768
+explanation.encoder.layer.11.crossattention.self.key.weight: 589824
+explanation.encoder.layer.11.crossattention.self.key.bias: 768
+explanation.encoder.layer.11.crossattention.self.value.weight: 589824
+explanation.encoder.layer.11.crossattention.self.value.bias: 768
+explanation.encoder.layer.11.crossattention.output.dense.weight: 589824
+explanation.encoder.layer.11.crossattention.output.dense.bias: 768
+explanation.encoder.layer.11.crossattention.output.LayerNorm.weight: 768
+explanation.encoder.layer.11.crossattention.output.LayerNorm.bias: 768
+explanation.encoder.layer.11.intermediate.dense.weight: 2359296
+explanation.encoder.layer.11.intermediate.dense.bias: 3072
+explanation.encoder.layer.11.output.dense.weight: 2359296
+explanation.encoder.layer.11.output.dense.bias: 768
+explanation.encoder.layer.11.output.LayerNorm.weight: 768
+explanation.encoder.layer.11.output.LayerNorm.bias: 768
+explanation_pghead.encoder_attention.linear_q.weight: 589824
+explanation_pghead.encoder_attention.linear_q.bias: 768
+explanation_pghead.encoder_attention.linear_k.weight: 589824
+explanation_pghead.encoder_attention.linear_k.bias: 768
+explanation_pghead.generation_dist.bias: 30522
+explanation_pghead.generation_prob_linear.weight: 2304
+explanation_pghead.generation_prob_linear.bias: 1
+var_count_expand.weight: 2359296
+var_count_expand.bias: 3072
+var_count_predict.weight: 27648
+var_count_predict.bias: 9
+TOTAL: 263375439
+
+-------------------- Dataset statistics    ---------------------
+equation.operators:
+  N: 3581
+  max: 21
+  mean: 7.395141022060876
+  min: 5
+  stdev: 2.548160818302014
+equation.var:
+  N: 3581
+  max: 4
+  mean: 1.366936609885507
+  min: 1
+  stdev: 0.5095692215680987
+explanation.words:
+  N: 45549
+  max: 28
+  mean: 7.7332762519484515
+  min: 2
+  stdev: 3.1811557280175298
+items: 3581
+text.numbers:
+  N: 3581
+  max: 15
+  mean: 4.207483943032672
+  min: 1
+  stdev: 2.07543035983697
+text.words:
+  N: 3581
+  max: 95
+  mean: 30.981569394024017
+  min: 6
+  stdev: 11.801778835672305
