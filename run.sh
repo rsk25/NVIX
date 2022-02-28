@@ -1,8 +1,7 @@
 #!/bin/bash
 
 ENCODER_SIZE=$1
-ENCODER=microsoft/cocolm-${ENCODER_SIZE}
-#ENCODER=google/electra-${ENCODER_SIZE}-discriminator
+ENCODER=google/electra-${ENCODER_SIZE}-discriminator
 DATA=./resource/dataset/pen.json
 export TOKENIZERS_PARALLELISM=false
 export CUBLAS_WORKSPACE_CONFIG=:4096:8
