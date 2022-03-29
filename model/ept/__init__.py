@@ -24,11 +24,14 @@ class EPT(CheckpointingModule):
     def __init__(self, **config):
         super().__init__(**config)
         # Encoder: [B, S] -> [B, S, H]
-        self.encoder = TextEncoder.create_or_load(encoder=self.config[MDL_ENCODER])
+        #self.encoder = TextEncoder.create_or_load(encoder=self.config[MDL_ENCODER])
+        ### change to (rsk) ###
+        self.explanation_encoder = TextEncoder.create_or_load(encoder=self.config[MDL_ENCODER])
+        self.equation_encoder = TextEncoder.create_or_load(encoder=self.config[MDL_ENCODER])
 
         # Decoder
         self.equation = EquationDecoder.create_or_load(**self.config[MDL_EQUATION],
-                                                       encoder_config=self.encoder.model.config)
+                                                       encoder_config=self.equation_encoder.model.config)
 
         # Action output
         hidden_dim = self.equation.hidden_dim
@@ -89,8 +92,13 @@ class EPT(CheckpointingModule):
 
         return dict(key=key, key_ignorance_mask=key_ignorance_mask, attention_mask=attention_mask)
 
-    def _encode(self, text: Text) -> Tuple[Encoded, Encoded]:
-        return self.encoder(text)
+    # def _encode(self, text: Text) -> Tuple[Encoded, Encoded]:
+    #     return self.encoder(text)
+    ### change to (rsk) ###
+    def _encode_expl(self, text: Text) -> Tuple[Encoded, Encoded]:
+        return self.explanation_encoder(text)
+    def _encode_equ(self, text: Text) -> Tuple[Encoded, Encoded]:
+        return self.equation_encoder(text)
 
     def _decode_equation(self, **kwargs) -> Tuple[Encoded, tuple]:
         cached = kwargs.pop('cached') if 'cached' in kwargs else None
@@ -258,7 +266,9 @@ class EPT(CheckpointingModule):
 
     def forward(self, text: Text, **kwargs):
         # Forward the encoder
-        text, num_enc = self._encode(text.to(self.device))
+        # text, num_enc = self._encode(text.to(self.device))
+        ### change to (rsk) ###
+        text, num_enc = self._encode_equ(text.to(self.device))
         return_value = dict(text=text, num_enc=num_enc)
 
         if self.training:

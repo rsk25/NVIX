@@ -28,9 +28,10 @@ class SWANBase(EPT):
         self.explanation = ExplanationDecoder.create_or_load(**self.config[MDL_EXPLANATION])
 
         # Head for predicting explanation
+        ### original self.encoder.model.config.vocab_size
         self.explanation_pghead = PointerGeneratorHead(hidden_dim=self.equation.hidden_dim,
                                                        embed_dim=self.explanation.embed_dim,
-                                                       vocab_size=self.encoder.model.config.vocab_size,
+                                                       vocab_size=self.explanation_encoder.model.config.vocab_size,
                                                        init_factor=self.equation.init_factor,
                                                        debug=False)
         tie_lm_head_with_embed(self.explanation_pghead.generation_dist, self.explanation.embeddings.word_embeddings)
@@ -267,7 +268,9 @@ class SWANBase(EPT):
             self._recombine_policy = use_text_prob
 
     def encode_text_step101(self, text: Text) -> dict:
-        text_vec, num_enc = self._encode(text.to(self.device))
+        #text_vec, num_enc = self._encode(text.to(self.device))
+        ### change to (rsk) ###
+        text_vec, num_enc = self._encode_expl(text.to(self.device))
         return dict(_text=text_vec, _number=num_enc)
 
     def predict_varcount_step102(self, _text: Encoded = None, _var_lengths: List[int] = None,
@@ -415,6 +418,11 @@ class SWANBase(EPT):
 
             return Text(raw=None, tokens=Label.build_batch(*concat_labels), numbers=Label.build_batch(*concat_numbers),
                         snippets=None)
+    
+    ### add (rsk) ###
+    def encode_text_step202(self, text: Text) -> dict:
+        text_vec, num_enc = self._encode_equ(text.to(self.device))
+        return dict(_text=text_vec, _number=num_enc)
 
     def generate_eqn_step203(self, equation: Equation, _text: Encoded = None, _number: Encoded = None,
                              beam: int = 3, **kwargs) -> dict:
@@ -487,7 +495,9 @@ class SWANBase(EPT):
         new_text = self.reconstruct_problem_step201(text, _num_expl, _var_expl)
 
         # (2-2) Compute explanation vector (Re-use step 1-1)
-        encode_result = self.encode_text_step101(new_text.to(self.device))
+        # encode_result = self.encode_text_step101(new_text.to(self.device))
+        ### change to (rsk) ###
+        encode_result = self.encode_text_step202(new_text.to(self.device))
 
         # (2-3) Read/Generate Equation
         number_len = [d.shape[0] for d in _num_expl]
